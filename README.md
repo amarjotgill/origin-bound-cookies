@@ -2,7 +2,7 @@
 
 # Origin-Bound Cookies
 
-This is the working area for the individual Internet-Draft, "TODO - Your title".
+This is the working area for the individual Internet-Draft, "Origin-Bound Cookies".
 
 * [Editor's Copy](https://amarjotgill.github.io/origin-bound-cookies/#go.draft-origin-bound-cookies-amarjotgill-protocol.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-origin-bound-cookies-amarjotgill-protocol)
