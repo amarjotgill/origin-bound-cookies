@@ -1,6 +1,6 @@
 ---
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Origin-Bound Cookies"
+abbrev: "OBC"
 category: info
 
 docname: draft-origin-bound-cookies-amarjotgill-protocol-latest
