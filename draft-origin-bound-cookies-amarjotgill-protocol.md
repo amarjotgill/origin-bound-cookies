@@ -84,6 +84,7 @@ An integer `port-matches` a given cookie if any of the following conditions are 
 Example:
 
 The new behavior will behave as the following.
+
 A cookie set by origin https://example.com will only ever be sent to https://example.com(:443). It will never be sent to a different port value such as https://example.com:8443.
 
 
