@@ -108,7 +108,8 @@ Table of Contents
    host matches the cookie will be accessible.
 
    This document proposes changes to [COOKIES] by bounding cookies to
-   port and scheme.
+   port and scheme which will prevent against these attacks and greatly
+   improve cookie security.
 
 2.  Conventions and Definitions
 
