@@ -35,10 +35,9 @@ informative:
 
 ...
 
---- abstract
+# Abstract
 
-TODO Abstract
-
+This draft introduces Origin-Bound Cookies which aims to make cookies more secure by default through binding cookies by port and scheme, 
 
 --- middle
 
