@@ -4,11 +4,11 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                            13 August 2025
-Expires: 14 February 2026
+Intended status: Informational                            14 August 2025
+Expires: 15 February 2026
 
 
-                           TODO - Your title
+                          Origin-Bound Cookies
          draft-origin-bound-cookies-amarjotgill-protocol-latest
 
 Abstract
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 February 2026.
+   This Internet-Draft will expire on 15 February 2026.
 
 Copyright Notice
 
