@@ -72,7 +72,7 @@ This document proposes changes to {{COOKIES}} by bounding cookies to port and sc
 
 ### Port Bound
 
-First, alter Section 5.1.2 of {{COOKIES}} by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
+First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
 Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under Section 5.3 of {{COOKIES}}.
 
