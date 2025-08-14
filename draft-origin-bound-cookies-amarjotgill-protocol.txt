@@ -66,9 +66,10 @@ Table of Contents
    1.  Introduction
      1.1.  Examples
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Server Requirements
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  Normative References
    Acknowledgments
    Author's Address
 
@@ -103,7 +104,7 @@ Table of Contents
    host matches the cookie will be accessible.
 
    This document proposes changes to [COOKIES] by bounding cookies to
-   port and scheme
+   port and scheme.
 
 2.  Conventions and Definitions
 
@@ -113,15 +114,19 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  Server Requirements
+
+   TODO Requirements and definitions.
+
+4.  Security Considerations
 
    TODO Security
 
-4.  IANA Considerations
+5.  IANA Considerations
 
    This document has no IANA actions.
 
-5.  Normative References
+6.  Normative References
 
    [COOKIES]  "Cookies HTTP State Management Mechanism", May 2025,
               <https://datatracker.ietf.org/doc/draft-ietf-httpbis-
