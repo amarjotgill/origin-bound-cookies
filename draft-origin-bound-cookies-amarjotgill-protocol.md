@@ -91,10 +91,6 @@ A cookie set by origin https://example.com will only ever be sent to https://exa
 ### Scheme Bound
 TODO
 
-### Shadowing Domain Cookies
-
-TODO
-
 # Security Considerations
 
 TODO Security
