@@ -1245,15 +1245,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           </h4>
 <p id="section-3.1.1-1">First, alter Section 5.1.2 of <span>[<a href="#COOKIES" class="cite xref">COOKIES</a>]</span> by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-2">Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under Section 5.3 of <span>[<a href="#COOKIES" class="cite xref">COOKIES</a>]</span><a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.1.1-3">
-<pre>
-5.3.5 Port matching
-An integer port-matches a given cookie if any of the following
-conditions are true:
+<p id="section-3.1.1-3">5.3.5 Port matching
+An integer port-matches a given cookie if any of the following conditions are true:
 1. The cookie's host-only-flag is false.
-2. The integer exactly matches the cookie's port value.
-</pre><a href="#section-3.1.1-3" class="pilcrow">¶</a>
-</div>
+2.  The integer exactly matches the cookie's port value.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-4">Example:<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-5">The new behavior will behave as the following.
 A cookie set by origin https://example.com will only ever be sent to https://example.com(:443). It will never be sent to a different port value such as https://example.com:8443.<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
