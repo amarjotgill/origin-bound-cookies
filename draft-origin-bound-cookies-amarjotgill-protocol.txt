@@ -129,6 +129,8 @@ Table of Contents
    struct) by adding source-port to the Cookie Struct, this would be
    necessary to keep track of the port the cookie was set on.
 
+   Below is the definition of the source-port attribute.
+
    |  A cookie's source-port.  It is initially "unset".
 
    Then add the concept of port matching which helps to simplify
