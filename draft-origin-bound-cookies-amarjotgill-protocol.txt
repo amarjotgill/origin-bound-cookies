@@ -101,6 +101,8 @@ Table of Contents
    care about the scheme or port of their connection.  As long as the
    host matches the cookie will be accessible.
 
+   This document proposes changes to [COOKIES]
+
 2.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -118,6 +120,10 @@ Table of Contents
    This document has no IANA actions.
 
 5.  Normative References
+
+   [COOKIES]  "Cookies HTTP State Management Mechanism", August 2025,
+              <https://datatracker.ietf.org/doc/draft-ietf-httpbis-
+              layered-cookies/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
