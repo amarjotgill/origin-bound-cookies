@@ -13,8 +13,9 @@ Expires: 15 February 2026
 
 Abstract
 
-   This draft introduces Origin-Bound Cookies which aims to make cookies
-   more secure by default through binding cookies by port and scheme.
+   This draft introduces Origin-Bound Cookies which updates [COOKIES]
+   aiming to make cookies more secure by default through binding cookies
+   by port and scheme.
 
 About This Document
 
@@ -101,7 +102,8 @@ Table of Contents
    care about the scheme or port of their connection.  As long as the
    host matches the cookie will be accessible.
 
-   This document proposes changes to [COOKIES]
+   This document proposes changes to [COOKIES] by bounding cookies to
+   port and scheme
 
 2.  Conventions and Definitions
 
