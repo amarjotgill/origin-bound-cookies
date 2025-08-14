@@ -41,7 +41,7 @@ informative:
 
 --- abstract
 
-This draft introduces Origin-Bound Cookies which aims to make cookies more secure by default through binding cookies by port and scheme.
+This draft introduces Origin-Bound Cookies which updates {{COOKIES}} aiming to make cookies more secure by default through binding cookies by port and scheme.
 
 --- middle
 
@@ -58,7 +58,7 @@ Cookies are one of the few components of the web platform that are not scoped to
 
 All of these examples are possible because cookies by default do not care about the scheme or port of their connection. As long as the host matches the cookie will be accessible.
 
-This document proposes changes to {{COOKIES}}
+This document proposes changes to {{COOKIES}} by bounding cookies to port and scheme
 
 
 
