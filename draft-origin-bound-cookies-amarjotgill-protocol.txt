@@ -86,6 +86,7 @@ Table of Contents
    the user, and then tricks them into visiting http://somesite.com
    (note the insecure scheme).  When the user visits that page their
    browser will send the secret cookie and the attacker can see it.
+
    Similarly, if the attacker has somehow compromised a service running
    on a different port on the same server, let's say port 345, as
    https://somesite.com then they could trick the user into visiting
