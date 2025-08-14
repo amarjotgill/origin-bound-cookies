@@ -70,7 +70,6 @@ Table of Contents
      3.1.  Origin-Bound Behavior
        3.1.1.  Port Bound
        3.1.2.  Scheme Bound
-       3.1.3.  Shadowing Domain Cookies
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
@@ -152,10 +151,6 @@ Table of Contents
    value such as https://example.com:8443.
 
 3.1.2.  Scheme Bound
-
-   TODO
-
-3.1.3.  Shadowing Domain Cookies
 
    TODO
 
