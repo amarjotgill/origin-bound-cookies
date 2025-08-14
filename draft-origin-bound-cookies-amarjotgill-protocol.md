@@ -1,6 +1,6 @@
 ---
 title: "Origin-Bound Cookies"
-abbrev: "OBC"
+abbrev: "Origin-Bound Cookies"
 category: info
 
 docname: draft-origin-bound-cookies-amarjotgill-protocol-latest
