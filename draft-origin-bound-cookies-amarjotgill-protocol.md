@@ -31,11 +31,13 @@ author:
 
 normative:
 
-COOKIES: title: Cookies HTTP State Management Mechanism date: 13 August 2025 target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
+ COOKIES:
+    title: Cookies HTTP State Management Mechanism
+    date: 13 August 2025
+    target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
+
 
 informative:
-
-...
 
 --- abstract
 
