@@ -74,6 +74,8 @@ This document proposes changes to {{COOKIES}} by bounding cookies to port and sc
 
 First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
+Below is the definition of the source-port attribute.
+
 {:quote}
 > A cookie's source-port. It is initially "unset".
 
