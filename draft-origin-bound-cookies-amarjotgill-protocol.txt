@@ -63,6 +63,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
+     1.1.  Examples
    2.  Conventions and Definitions
    3.  Security Considerations
    4.  IANA Considerations
@@ -77,7 +78,7 @@ Table of Contents
    means that cookies have weaken confidentiality and integrity compared
    with other storage APIs on the web platform.
 
-   Examples:
+1.1.  Examples
 
    https://somesite.com sets a simple cookie, secret=123456, which
    contains private information about a user.  Information that an
