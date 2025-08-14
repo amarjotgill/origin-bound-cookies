@@ -79,8 +79,9 @@ Then add the concept of port matching which helps to simplify checking if a cook
  `5.3.5 Port matching`
   An integer port-matches a given cookie if any of the following
   conditions are true:
-    1. The cookie's host-only-flag is false.
   
+    1. The cookie's host-only-flag is false.
+    
     2. The integer exactly matches the cookie's port value.
 
 Example:
