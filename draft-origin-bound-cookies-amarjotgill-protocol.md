@@ -74,12 +74,14 @@ This document proposes changes to {{COOKIES}} by bounding cookies to port and sc
 
 First, alter Section 5.1.2 of {{COOKIES}} by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
-Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under Section 5.3 of {{COOKIES}}
+Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under Section 5.3 of {{COOKIES}}.
 
 5.3.5 Port matching
-An integer port-matches a given cookie if any of the following conditions are true:
-1. The cookie's host-only-flag is false.
-2.  The integer exactly matches the cookie's port value.
+
+ An integer port-matches a given cookie if any of the following conditions are true:
+ 
+ 1. The cookie's host-only-flag is false.
+ 2. The integer exactly matches the cookie's port value.
 
 Example:
 
