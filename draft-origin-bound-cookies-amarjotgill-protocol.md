@@ -31,6 +31,8 @@ author:
 
 normative:
 
+COOKIES: title: Cookies HTTP State Management Mechanism date: 13 August 2025 target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
+
 informative:
 
 ...
@@ -53,6 +55,9 @@ Cookies are one of the few components of the web platform that are not scoped to
   Even more, through the same techniques, an attacker can also modify a user's cookies, sending a Set-Cookie field instead of simply eavesdropping.
 
 All of these examples are possible because cookies by default do not care about the scheme or port of their connection. As long as the host matches the cookie will be accessible.
+
+This document proposes changes to {{COOKIES}}
+
 
 
 # Conventions and Definitions
