@@ -132,8 +132,6 @@ Table of Contents
    checking if a cookie would match a port value We can do that by
    adding a new section under Section 5.3 of [COOKIES].
 
-3.1.1.1.  *5.3.5 Port Matching*
-
    An integer port-matches a given cookie if any of the following
    conditions are true:
 
