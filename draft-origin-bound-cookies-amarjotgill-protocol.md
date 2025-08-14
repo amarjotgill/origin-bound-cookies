@@ -67,8 +67,19 @@ This document proposes changes to {{COOKIES}} by bounding cookies to port and sc
 {::boilerplate bcp14-tagged}
 
 # Server Requirements
- TODO Requirements and definitions.
 
+## Origin-Bound Behavior
+
+### Port Bound
+
+TODO
+
+### Scheme Bound
+TODO
+
+### Shadowing Domain Cookies
+
+TODO
 
 # Security Considerations
 
