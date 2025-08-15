@@ -159,7 +159,7 @@ The following will need to be altered:
 Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
 
 
-## Garbage Colletion
+## Garbage Collection
 The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
 
 To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
