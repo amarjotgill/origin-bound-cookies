@@ -94,7 +94,27 @@ A cookie set by origin https://example.com will only ever be sent to https://exa
 
 
 ### Scheme Bound
-TODO
+
+First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-scheme to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
+
+Below is the definition of the source-scheme attribute.
+
+{:quote}
+> A cookie's source-scheme. It is initially "unset".
+
+Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
+
+A scheme `scheme-matches` a given cookie if any of the following conditions are true:
+
+1.  The cookie's `host-only-flag` is `false`.
+2.  The scheme exactly matches the cookie's `scheme` value.
+
+Example:
+
+The new behavior will behave as the following.
+
+A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
+
 
 # Security Considerations
 
