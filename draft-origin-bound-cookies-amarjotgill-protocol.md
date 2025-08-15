@@ -134,6 +134,19 @@ The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.or
 
 The following will need to be altered:
 
+{:quote}
+>1. Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.
+>2. Let host be request's host.
+>3. Let path be request's URL's path.
+>4. Let httpOnlyAllowed be true.
+>5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
+>6. let sourcePort be request's URL's port.
+>7. let sourceScheme be request's URL's scheme.
+>8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, sourcePort, and sourceScheme.
+>9. Return the result of running Serialize Cookies given cookies.
+
+Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
+
 # Security Considerations
 
 TODO Security
