@@ -280,7 +280,8 @@ Table of Contents
 
 4.  Security Considerations
 
-   TODO Security
+   This feature does not introduce any new security considerations.  The
+   feature only stores and uses more of the already available data.
 
 5.  IANA Considerations
 
