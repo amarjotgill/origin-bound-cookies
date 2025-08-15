@@ -193,8 +193,8 @@ Table of Contents
    COOKIES)[https://httpwg.org/http-extensions/draft-ietf-httpbis-
    layered-cookies.html#name-store-a-cookie] will also be neccessary
    this is due to the fact that is the newCookie and oldCookie's scheme
-   and port do not exact match then instead of overwriting the newCookie
-   is set as a seperate cookie.
+   and port do not exact match then instead of overwriting the new
+   cookie is stored as a seperate cookie.
 
    Step number 18 of this section will need to be altered to:
 
@@ -212,7 +212,7 @@ Table of Contents
 
       5.Remove oldCookie from the user agent's cookie store.
 
-   Note the addtion of step number 3.  This step will prevent a cookie
+   Note the addition of step number 3.  This step will prevent a cookie
    with differing port or scheme values from overwriting the oldCookie,
    instead this cookie would be stored as a separate cookie and the
    oldCookie will not be deleted.
