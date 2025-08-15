@@ -115,6 +115,34 @@ The new behavior will behave as the following.
 
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
+## Shadowing Cookies
+Flexible Cookies Using the Domain Attribute
+A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
+
+Any host that matches the specified domain.
+
+Any port on those hosts.
+
+Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.
+
+The "Shadowing" Security Issue
+This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
+
+Here's an example:
+
+A user visits https://trusted.example.com, which sets a secure cookie:
+
+Set-Cookie: trustedValue=1234
+
+Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:
+
+Set-Cookie: trustedValue=evil1234; Domain=example.com
+
+The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.
+
+The Solution:
+To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.
+
 ## Storage
 Altering the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie) will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.
 
