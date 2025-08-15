@@ -181,7 +181,16 @@ Table of Contents
 
    1.  The cookie's host-only-flag is false.
 
-   2.  The scheme exactly matches the cookie's scheme value.
+   2.  Two schemes represented as strings, A and B, are considered
+       compatible if one of the following is true:
+
+   3.  A exactly matches B
+
+   4.  A and B are both in [“http”, “ws”]
+
+   5.  A and B are both in [“https”, “wss”]
+
+   6.  Else they are considered incompatible.
 
    Example:
 
