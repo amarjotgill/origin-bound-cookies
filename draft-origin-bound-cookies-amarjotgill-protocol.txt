@@ -232,8 +232,8 @@ Table of Contents
 
    2.  scheme scheme-matches cookie's scheme.
 
-   This will ensure that a cookie is only retrieved if the origin is the
-   same as the one it was set on.
+   This will ensure that a cookie is only retrieved if the request
+   origin is equal to the cookie's origin
 
 3.4.  The Cookie Header Field
 
