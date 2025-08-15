@@ -1296,13 +1296,29 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3.1.3-1">Altering the storage model in (Section 5.4.3 of COOKIES)[https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie] will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the newCookie is set as a seperate cookie.<a href="#section-3.1.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.1.3-2">Step number 18 of this section will need to be altered to:<a href="#section-3.1.3-2" class="pilcrow">¶</a></p>
 <blockquote id="section-3.1.3-3">
-            <p id="section-3.1.3-3.1">1.If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.
-2.If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.
-3.If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.
-4.Set cookie's creation-time to oldCookie's creation-time.
-5.Remove oldCookie from the user agent's cookie store.<a href="#section-3.1.3-3.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1.3-3.1">1.If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.<a href="#section-3.1.3-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.1.3-4">Note the addtion of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.1.3-4" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1.3-4.1">
+              <p id="section-3.1.3-4.1.1">2.If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.<a href="#section-3.1.3-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1.3-5.1">
+              <p id="section-3.1.3-5.1.1">3.If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.<a href="#section-3.1.3-5.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1.3-6.1">
+              <p id="section-3.1.3-6.1.1">4.Set cookie's creation-time to oldCookie's creation-time.<a href="#section-3.1.3-6.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.1.3-7.1">
+              <p id="section-3.1.3-7.1.1">5.Remove oldCookie from the user agent's cookie store.<a href="#section-3.1.3-7.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-3.1.3-8">Note the addtion of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.1.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
