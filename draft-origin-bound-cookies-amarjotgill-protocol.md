@@ -104,14 +104,15 @@ Below is the definition of the source-scheme attribute.
 
 Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
-A scheme `scheme-matches` a given cookie if any of the following conditions are true:
+Schemes are represented as strings, A and B, are considered `scheme-matches` if one of the following is true:
 
 1.  The cookie's `host-only-flag` is `false`.
-2.  Two schemes represented as strings, A and B, are considered compatible if one of the following is true:
-3.  A exactly matches B
-4.  A and B are both in [“http”, “ws”]
-5.  A and B are both in [“https”, “wss”]
-6.  Else they are considered incompatible.
+2.  A exactly matches B
+3.  A and B are both in [“http”, “ws”]
+4.  A and B are both in [“https”, “wss”]
+
+
+Else they are considered incompatible.
 
 
 Example:
@@ -201,6 +202,7 @@ In the context of eviction policy secure cookies are cookies that specify the Se
 Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).
 
 New eviction policy (per eTLD+1):
+
 1. Expired cookies (Most preferred to evict)
 2. For each {priority, secureness} tuple :
 3. {Low, insecure}
