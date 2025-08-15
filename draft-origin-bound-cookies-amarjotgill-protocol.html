@@ -1165,22 +1165,22 @@ svg :is([fill="white"], [fill^="#fff"]) {
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-scheme-bound" class="internal xref">Scheme Bound</a></p>
 </li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.3">
+                    <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="auto internal xref">3.1.3</a>.  <a href="#name-shadowing-cookies" class="internal xref">Shadowing Cookies</a></p>
+</li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-shadowing-cookies" class="internal xref">Shadowing Cookies</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-storage" class="internal xref">Storage</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-storage" class="internal xref">Storage</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-retrieve-cookies" class="internal xref">Retrieve Cookies</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
-                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-retrieve-cookies" class="internal xref">Retrieve Cookies</a></p>
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-the-cookie-header-field" class="internal xref">The Cookie Header Field</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-the-cookie-header-field" class="internal xref">The Cookie Header Field</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
-                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-garbage-collection" class="internal xref">Garbage Collection</a></p>
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-garbage-collection" class="internal xref">Garbage Collection</a></p>
 </li>
             </ul>
 </li>
@@ -1312,128 +1312,128 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3.1.2-9">A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.<a href="#section-3.1.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="shadowing-cookies">
+<section id="section-3.1.3">
+          <h4 id="name-shadowing-cookies">
+<a href="#section-3.1.3" class="section-number selfRef">3.1.3. </a><a href="#name-shadowing-cookies" class="section-name selfRef">Shadowing Cookies</a>
+          </h4>
+<p id="section-3.1.3-1">Flexible Cookies Using the Domain Attribute
+A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:<a href="#section-3.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-2">Any host that matches the specified domain.<a href="#section-3.1.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-3">Any port on those hosts.<a href="#section-3.1.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-4">Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.<a href="#section-3.1.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-5">The "Shadowing" Security Issue
+This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.<a href="#section-3.1.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-6">Here's an example:<a href="#section-3.1.3-6" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-7">A user visits https://trusted.example.com, which sets a secure cookie:<a href="#section-3.1.3-7" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-8">Set-Cookie: trustedValue=1234<a href="#section-3.1.3-8" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-9">Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:<a href="#section-3.1.3-9" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-10">Set-Cookie: trustedValue=evil1234; Domain=example.com<a href="#section-3.1.3-10" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-11">The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.<a href="#section-3.1.3-11" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-12">The Solution:<a href="#section-3.1.3-12" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-13">To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.<a href="#section-3.1.3-13" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="shadowing-cookies">
-<section id="section-3.2">
-        <h3 id="name-shadowing-cookies">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-shadowing-cookies" class="section-name selfRef">Shadowing Cookies</a>
-        </h3>
-<p id="section-3.2-1">Flexible Cookies Using the Domain Attribute
-A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">Any host that matches the specified domain.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.2-3">Any port on those hosts.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
-<p id="section-3.2-4">Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.2-5">The "Shadowing" Security Issue
-This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
-<p id="section-3.2-6">Here's an example:<a href="#section-3.2-6" class="pilcrow">¶</a></p>
-<p id="section-3.2-7">A user visits https://trusted.example.com, which sets a secure cookie:<a href="#section-3.2-7" class="pilcrow">¶</a></p>
-<p id="section-3.2-8">Set-Cookie: trustedValue=1234<a href="#section-3.2-8" class="pilcrow">¶</a></p>
-<p id="section-3.2-9">Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:<a href="#section-3.2-9" class="pilcrow">¶</a></p>
-<p id="section-3.2-10">Set-Cookie: trustedValue=evil1234; Domain=example.com<a href="#section-3.2-10" class="pilcrow">¶</a></p>
-<p id="section-3.2-11">The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.<a href="#section-3.2-11" class="pilcrow">¶</a></p>
-<p id="section-3.2-12">The Solution:<a href="#section-3.2-12" class="pilcrow">¶</a></p>
-<p id="section-3.2-13">To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.<a href="#section-3.2-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="storage">
-<section id="section-3.3">
+<section id="section-3.2">
         <h3 id="name-storage">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-storage" class="section-name selfRef">Storage</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-storage" class="section-name selfRef">Storage</a>
         </h3>
-<p id="section-3.3-1">Altering the storage model in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie">Section 5.4.3 of COOKIES</a> will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">Step number 18 of this section will need to be altered to:<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<blockquote id="section-3.3-3">
-          <ol start="1" type="1" class="normal type-1" id="section-3.3-3.1">
-<li id="section-3.3-3.1.1">
-              <p id="section-3.3-3.1.1.1">If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.<a href="#section-3.3-3.1.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">Altering the storage model in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie">Section 5.4.3 of COOKIES</a> will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">Step number 18 of this section will need to be altered to:<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<blockquote id="section-3.2-3">
+          <ol start="1" type="1" class="normal type-1" id="section-3.2-3.1">
+<li id="section-3.2-3.1.1">
+              <p id="section-3.2-3.1.1.1">If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.<a href="#section-3.2-3.1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.3-3.1.2">
-              <p id="section-3.3-3.1.2.1">If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.<a href="#section-3.3-3.1.2.1" class="pilcrow">¶</a></p>
+            <li id="section-3.2-3.1.2">
+              <p id="section-3.2-3.1.2.1">If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.<a href="#section-3.2-3.1.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.3-3.1.3">
-              <p id="section-3.3-3.1.3.1">If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.<a href="#section-3.3-3.1.3.1" class="pilcrow">¶</a></p>
+            <li id="section-3.2-3.1.3">
+              <p id="section-3.2-3.1.3.1">If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.<a href="#section-3.2-3.1.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.3-3.1.4">
-              <p id="section-3.3-3.1.4.1">Set cookie's creation-time to oldCookie's creation-time.<a href="#section-3.3-3.1.4.1" class="pilcrow">¶</a></p>
+            <li id="section-3.2-3.1.4">
+              <p id="section-3.2-3.1.4.1">Set cookie's creation-time to oldCookie's creation-time.<a href="#section-3.2-3.1.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.3-3.1.5">
-              <p id="section-3.3-3.1.5.1">Remove oldCookie from the user agent's cookie store.<a href="#section-3.3-3.1.5.1" class="pilcrow">¶</a></p>
+            <li id="section-3.2-3.1.5">
+              <p id="section-3.2-3.1.5.1">Remove oldCookie from the user agent's cookie store.<a href="#section-3.2-3.1.5.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 </blockquote>
-<p id="section-3.3-4">Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieve-cookies">
-<section id="section-3.4">
+<section id="section-3.3">
         <h3 id="name-retrieve-cookies">
-<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-retrieve-cookies" class="section-name selfRef">Retrieve Cookies</a>
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-retrieve-cookies" class="section-name selfRef">Retrieve Cookies</a>
         </h3>
-<p id="section-3.4-1">The Retrieve Cookies algorithm will need to be updated in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies">Section 5.4.5 of COOKIES</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">The following will need to be added to step 2:<a href="#section-3.4-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.4-3">
-<li id="section-3.4-3.1">
-            <p id="section-3.4-3.1.1">port <code>port-matches</code> cookie's port.<a href="#section-3.4-3.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">The Retrieve Cookies algorithm will need to be updated in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies">Section 5.4.5 of COOKIES</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">The following will need to be added to step 2:<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3.3-3">
+<li id="section-3.3-3.1">
+            <p id="section-3.3-3.1.1">port <code>port-matches</code> cookie's port.<a href="#section-3.3-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-3.4-3.2">
-            <p id="section-3.4-3.2.1">scheme <code>scheme-matches</code> cookie's scheme.<a href="#section-3.4-3.2.1" class="pilcrow">¶</a></p>
+          <li id="section-3.3-3.2">
+            <p id="section-3.3-3.2.1">scheme <code>scheme-matches</code> cookie's scheme.<a href="#section-3.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
-<p id="section-3.4-4">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<p id="section-3.3-4">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-cookie-header-field">
-<section id="section-3.5">
+<section id="section-3.4">
         <h3 id="name-the-cookie-header-field">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-the-cookie-header-field" class="section-name selfRef">The Cookie Header Field</a>
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-the-cookie-header-field" class="section-name selfRef">The Cookie Header Field</a>
         </h3>
-<p id="section-3.5-1">The cookie header field outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field">Section 5.5.2 of COOKIES</a> will need to be altered.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
-<p id="section-3.5-2">The following will need to be altered:<a href="#section-3.5-2" class="pilcrow">¶</a></p>
-<blockquote id="section-3.5-3">
-          <ol start="1" type="1" class="normal type-1" id="section-3.5-3.1">
-<li id="section-3.5-3.1.1">
-              <p id="section-3.5-3.1.1.1">Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.<a href="#section-3.5-3.1.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.4-1">The cookie header field outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field">Section 5.5.2 of COOKIES</a> will need to be altered.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">The following will need to be altered:<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<blockquote id="section-3.4-3">
+          <ol start="1" type="1" class="normal type-1" id="section-3.4-3.1">
+<li id="section-3.4-3.1.1">
+              <p id="section-3.4-3.1.1.1">Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.<a href="#section-3.4-3.1.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.2">
-              <p id="section-3.5-3.1.2.1">Let host be request's host.<a href="#section-3.5-3.1.2.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.2">
+              <p id="section-3.4-3.1.2.1">Let host be request's host.<a href="#section-3.4-3.1.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.3">
-              <p id="section-3.5-3.1.3.1">Let path be request's URL's path.<a href="#section-3.5-3.1.3.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.3">
+              <p id="section-3.4-3.1.3.1">Let path be request's URL's path.<a href="#section-3.4-3.1.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.4">
-              <p id="section-3.5-3.1.4.1">Let httpOnlyAllowed be true.<a href="#section-3.5-3.1.4.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.4">
+              <p id="section-3.4-3.1.4.1">Let httpOnlyAllowed be true.<a href="#section-3.4-3.1.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.5">
-              <p id="section-3.5-3.1.5.1">Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".<a href="#section-3.5-3.1.5.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.5">
+              <p id="section-3.4-3.1.5.1">Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".<a href="#section-3.4-3.1.5.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.6">
-              <p id="section-3.5-3.1.6.1">let port be request's URL's port.<a href="#section-3.5-3.1.6.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.6">
+              <p id="section-3.4-3.1.6.1">let port be request's URL's port.<a href="#section-3.4-3.1.6.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.7">
-              <p id="section-3.5-3.1.7.1">let scheme be request's URL's scheme.<a href="#section-3.5-3.1.7.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.7">
+              <p id="section-3.4-3.1.7.1">let scheme be request's URL's scheme.<a href="#section-3.4-3.1.7.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.8">
-              <p id="section-3.5-3.1.8.1">Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.<a href="#section-3.5-3.1.8.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.8">
+              <p id="section-3.4-3.1.8.1">Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.<a href="#section-3.4-3.1.8.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-3.5-3.1.9">
-              <p id="section-3.5-3.1.9.1">Return the result of running Serialize Cookies given cookies.<a href="#section-3.5-3.1.9.1" class="pilcrow">¶</a></p>
+            <li id="section-3.4-3.1.9">
+              <p id="section-3.4-3.1.9.1">Return the result of running Serialize Cookies given cookies.<a href="#section-3.4-3.1.9.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 </blockquote>
-<p id="section-3.5-4">Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.4-4">Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="garbage-collection">
-<section id="section-3.6">
+<section id="section-3.5">
         <h3 id="name-garbage-collection">
-<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-garbage-collection" class="section-name selfRef">Garbage Collection</a>
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-garbage-collection" class="section-name selfRef">Garbage Collection</a>
         </h3>
-<p id="section-3.6-1">The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies">Section 5.4.4 of COOKIES</a>.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
-<p id="section-3.6-2">To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
+<p id="section-3.5-1">The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies">Section 5.4.4 of COOKIES</a>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2">To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
 In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
-Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).<a href="#section-3.6-2" class="pilcrow">¶</a></p>
-<p id="section-3.6-3">New eviction policy (per eTLD+1):
+Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+<p id="section-3.5-3">New eviction policy (per eTLD+1):
 1. Expired cookies (Most preferred to evict)
 2. For each {priority, secureness} tuple :
 3. {Low, insecure}
@@ -1445,9 +1445,9 @@ Similarly, domain cookies on an origin will be preferred for eviction before ori
 9. Aliased domain cookies (in legacy mode)
 10. Aliased origin cookies (in legacy mode)
 11. Unique domain cookies
-12. Unique origin cookies<a href="#section-3.6-3" class="pilcrow">¶</a></p>
-<p id="section-3.6-4">Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
-priority secure cookies (and is inherited from the legacy behavior).<a href="#section-3.6-4" class="pilcrow">¶</a></p>
+12. Unique origin cookies<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+<p id="section-3.5-4">Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
+priority secure cookies (and is inherited from the legacy behavior).<a href="#section-3.5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
