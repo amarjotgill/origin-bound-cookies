@@ -107,7 +107,12 @@ Then add the concept of scheme matching which helps to simplify checking if a co
 A scheme `scheme-matches` a given cookie if any of the following conditions are true:
 
 1.  The cookie's `host-only-flag` is `false`.
-2.  The scheme exactly matches the cookie's `scheme` value.
+2.  Two schemes represented as strings, A and B, are considered compatible if one of the following is true:
+3.  A exactly matches B
+4.  A and B are both in [“http”, “ws”]
+5.  A and B are both in [“https”, “wss”]
+6.  Else they are considered incompatible.
+
 
 Example:
 
