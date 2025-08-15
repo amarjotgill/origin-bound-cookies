@@ -135,9 +135,8 @@ The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOK
 
 The following will need to be an addition to step 2:
 
-{:quote}
-> scheme Scheme-Matches cookie's scheme.
-> port Port-Matches cookie's port.
+scheme `scheme-matches` cookie's scheme.
+port `port-matches` cookie's port.
 
 This will ensure that a cookie is only retrieved if the origin is the same as the one it was set on.
 
