@@ -141,6 +141,7 @@ Set-Cookie: trustedValue=evil1234; Domain=example.com
 The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.
 
 The Solution:
+
 To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.
 
 ## Storage
