@@ -160,7 +160,7 @@ Note the major change here is extracting the port and scheme from the request an
 
 
 ## Garbage Colletion
-The last algorithm that will be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
+The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
 
 
 
