@@ -73,7 +73,7 @@ Table of Contents
      3.2.  Storage
      3.3.  Retrieve Cookies
      3.4.  The Cookie Header Field
-     3.5.  Garbage Colletion
+     3.5.  Garbage Collection
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
@@ -271,7 +271,7 @@ Table of Contents
    request and running the new version of Retrieve Cookies based on
    that.
 
-3.5.  Garbage Colletion
+3.5.  Garbage Collection
 
    The last algorithm that will need to be updated is the Garbage
    Collection algorithm outlined in Section 5.4.4 of COOKIES
