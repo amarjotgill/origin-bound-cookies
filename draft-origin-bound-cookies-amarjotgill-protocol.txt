@@ -228,10 +228,12 @@ Table of Contents
    the malicious evil1234 cookie, leading to potential security
    problems.
 
-   The Solution: To preserve the security benefits of origin cookies,
-   this design disallows a domain cookie from shadowing an origin
-   cookie.  This ensures that the more specific and secure cookie cannot
-   be overridden by a less secure one.
+   The Solution:
+
+   To preserve the security benefits of origin cookies, this design
+   disallows a domain cookie from shadowing an origin cookie.  This
+   ensures that the more specific and secure cookie cannot be overridden
+   by a less secure one.
 
 3.3.  Storage
 

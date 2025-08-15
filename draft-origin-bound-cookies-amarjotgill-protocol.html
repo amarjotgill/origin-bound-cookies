@@ -1320,8 +1320,8 @@ This flexibility creates a potential vulnerability where a secure "origin cookie
 <p id="section-3.2-9">Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:<a href="#section-3.2-9" class="pilcrow">¶</a></p>
 <p id="section-3.2-10">Set-Cookie: trustedValue=evil1234; Domain=example.com<a href="#section-3.2-10" class="pilcrow">¶</a></p>
 <p id="section-3.2-11">The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.<a href="#section-3.2-11" class="pilcrow">¶</a></p>
-<p id="section-3.2-12">The Solution:
-To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.<a href="#section-3.2-12" class="pilcrow">¶</a></p>
+<p id="section-3.2-12">The Solution:<a href="#section-3.2-12" class="pilcrow">¶</a></p>
+<p id="section-3.2-13">To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.<a href="#section-3.2-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="storage">
