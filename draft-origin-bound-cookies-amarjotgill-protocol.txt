@@ -73,6 +73,7 @@ Table of Contents
      3.2.  Storage
      3.3.  Retrieve Cookies
      3.4.  The Cookie Header Field
+     3.5.  Garbage Colletion
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
@@ -223,7 +224,7 @@ Table of Contents
 3.3.  Retrieve Cookies
 
    The Retrieve Cookies algorithm will need to be updated in
-   Section 5.5.4 of COOKIES (https://httpwg.org/http-extensions/draft-
+   Section 5.4.5 of COOKIES (https://httpwg.org/http-extensions/draft-
    ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
    The following will need to be added to step 2:
@@ -269,6 +270,13 @@ Table of Contents
    Note the major change here is extracting the port and scheme from the
    request and running the new version of Retrieve Cookies based on
    that.
+
+3.5.  Garbage Colletion
+
+   The last algorithm that will be updated is the Garbage Collection
+   algorithm outlined in Section 5.4.4 of COOKIES (https://httpwg.org/
+   http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-
+   collect-cookies).
 
 4.  Security Considerations
 
