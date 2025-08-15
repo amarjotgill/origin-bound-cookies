@@ -116,25 +116,23 @@ The new behavior will behave as the following.
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
 ### Storage
-Altering the storage model in (Section 5.4.3 of COOKIES)[https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie] will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.
+Altering the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie) will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.
 
 Step number 18 of this section will need to be altered to:
 
 {:quote}
-> 1.If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.
-
-> 2.If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.
-
-> 3.If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.
-
-> 4.Set cookie's creation-time to oldCookie's creation-time.
-
-> 5.Remove oldCookie from the user agent's cookie store.
+> 1. If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.\n
+> 2. If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.\n
+> 3. If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.\n
+> 4. Set cookie's creation-time to oldCookie's creation-time.\n
+> 5. Remove oldCookie from the user agent's cookie store.\n
 
 Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 
+### The Cookie Header Field
+The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
 
-
+The following will need to be altered:
 
 # Security Considerations
 
