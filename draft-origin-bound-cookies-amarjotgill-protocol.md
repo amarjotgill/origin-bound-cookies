@@ -131,7 +131,7 @@ Note the addition of step number 3. This step will prevent a cookie with differi
 
 ## Retrieve Cookies
 
-The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
+The Retrieve Cookies algorithm will need to be updated in [Section 5.4.5 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
 The following will need to be added to step 2:
 
@@ -157,6 +157,13 @@ The following will need to be altered:
 >9. Return the result of running Serialize Cookies given cookies.
 
 Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
+
+
+## Garbage Colletion
+The last algorithm that will be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
+
+
+
 
 # Security Considerations
 
