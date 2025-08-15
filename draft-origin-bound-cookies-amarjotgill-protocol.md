@@ -138,7 +138,7 @@ The following will need to be added to step 2:
 1.  port `port-matches` cookie's port.
 2.  scheme `scheme-matches` cookie's scheme.
 
-This will ensure that a cookie is only retrieved if the origin is the same as the one it was set on.
+This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
 
 ## The Cookie Header Field
 The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
