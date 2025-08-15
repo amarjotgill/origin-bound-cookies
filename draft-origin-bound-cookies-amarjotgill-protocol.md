@@ -116,7 +116,7 @@ The new behavior will behave as the following.
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
 ### Storage
-Altering the storage model in (Section 5.4.3 of COOKIES)[https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie] will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the newCookie is set as a seperate cookie.
+Altering the storage model in (Section 5.4.3 of COOKIES)[https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie] will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.
 
 Step number 18 of this section will need to be altered to:
 
@@ -131,7 +131,7 @@ Step number 18 of this section will need to be altered to:
 
 > 5.Remove oldCookie from the user agent's cookie store.
 
-Note the addtion of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
+Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 
 
 
