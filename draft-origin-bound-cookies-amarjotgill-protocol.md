@@ -129,6 +129,18 @@ Step number 18 of this section will need to be altered to:
 
 Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 
+### Retrieve Cookies 
+
+The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies)
+
+The following will need to be an addition to step 2:
+
+{:quote}
+>scheme Scheme-Matches cookie's scheme.
+>port Port-Matches cookie's port.
+
+This will ensure that a cookie is only retrieved if the origin is the same as the one it was set on.
+
 ### The Cookie Header Field
 The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
 
@@ -140,9 +152,9 @@ The following will need to be altered:
 >3. Let path be request's URL's path.
 >4. Let httpOnlyAllowed be true.
 >5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
->6. let sourcePort be request's URL's port.
->7. let sourceScheme be request's URL's scheme.
->8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, sourcePort, and sourceScheme.
+>6. let port be request's URL's port.
+>7. let scheme be request's URL's scheme.
+>8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.
 >9. Return the result of running Serialize Cookies given cookies.
 
 Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
