@@ -70,10 +70,11 @@ Table of Contents
      3.1.  Origin-Bound Behavior
        3.1.1.  Port Bound
        3.1.2.  Scheme Bound
-     3.2.  Storage
-     3.3.  Retrieve Cookies
-     3.4.  The Cookie Header Field
-     3.5.  Garbage Collection
+     3.2.  Shadowing Cookies
+     3.3.  Storage
+     3.4.  Retrieve Cookies
+     3.5.  The Cookie Header Field
+     3.6.  Garbage Collection
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
@@ -190,7 +191,49 @@ Table of Contents
    https://example.com.  It will never be sent to a different scheme
    value such as http://example.com.
 
-3.2.  Storage
+3.2.  Shadowing Cookies
+
+   Flexible Cookies Using the Domain Attribute A cookie that includes a
+   Domain attribute is called a "domain cookie" and has more relaxed
+   restrictions.  Specifically, it can be sent to:
+
+   Any host that matches the specified domain.
+
+   Any port on those hosts.
+
+   Importantly, the cookie remains bound to the scheme (e.g., https) of
+   the site that set it.  This behavior allows developers to opt-out of
+   the stricter default protections, which is useful when a cookie needs
+   to be shared across multiple subdomains or ports.
+
+   The "Shadowing" Security Issue This flexibility creates a potential
+   vulnerability where a secure "origin cookie" (one without a Domain
+   attribute) could be overridden or "shadowed" by a less-secure domain
+   cookie.
+
+   Here's an example:
+
+   A user visits https://trusted.example.com, which sets a secure
+   cookie:
+
+   Set-Cookie: trustedValue=1234
+
+   Later, the user visits https://evil.example.com, which sets a
+   conflicting domain cookie:
+
+   Set-Cookie: trustedValue=evil1234; Domain=example.com
+
+   The next time the user visits https://trusted.example.com, the
+   browser will send both cookies.  The server might incorrectly process
+   the malicious evil1234 cookie, leading to potential security
+   problems.
+
+   The Solution: To preserve the security benefits of origin cookies,
+   this design disallows a domain cookie from shadowing an origin
+   cookie.  This ensures that the more specific and secure cookie cannot
+   be overridden by a less secure one.
+
+3.3.  Storage
 
    Altering the storage model in Section 5.4.3 of COOKIES
    (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
@@ -221,7 +264,7 @@ Table of Contents
    instead this cookie would be stored as a separate cookie and the
    oldCookie will not be deleted.
 
-3.3.  Retrieve Cookies
+3.4.  Retrieve Cookies
 
    The Retrieve Cookies algorithm will need to be updated in
    Section 5.4.5 of COOKIES (https://httpwg.org/http-extensions/draft-
@@ -236,7 +279,7 @@ Table of Contents
    This will ensure that a cookie is only retrieved if the request
    origin is equal to the cookie's origin
 
-3.4.  The Cookie Header Field
+3.5.  The Cookie Header Field
 
    The cookie header field outlined in Section 5.5.2 of COOKIES
    (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
@@ -271,7 +314,7 @@ Table of Contents
    request and running the new version of Retrieve Cookies based on
    that.
 
-3.5.  Garbage Collection
+3.6.  Garbage Collection
 
    The last algorithm that will need to be updated is the Garbage
    Collection algorithm outlined in Section 5.4.4 of COOKIES
