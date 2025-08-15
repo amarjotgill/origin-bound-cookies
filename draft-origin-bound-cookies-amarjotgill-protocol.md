@@ -167,7 +167,7 @@ The last algorithm that will need to be updated is the Garbage Collection algori
 
 # Security Considerations
 
-TODO Security
+This feature does not introduce any new security considerations. The feature only stores and uses more of the already available data.
 
 
 # IANA Considerations
