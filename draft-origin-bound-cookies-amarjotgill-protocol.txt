@@ -71,7 +71,8 @@ Table of Contents
        3.1.1.  Port Bound
        3.1.2.  Scheme Bound
        3.1.3.  Storage
-       3.1.4.  The Cookie Header Field
+       3.1.4.  Retrieve Cookies
+       3.1.5.  The Cookie Header Field
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
@@ -219,7 +220,16 @@ Table of Contents
    instead this cookie would be stored as a separate cookie and the
    oldCookie will not be deleted.
 
-3.1.4.  The Cookie Header Field
+3.1.4.  Retrieve Cookies
+
+   The Retrieve Cookies algorithm will need to be updated in
+   Section 5.5.4 of COOKIES (https://httpwg.org/http-extensions/draft-
+   ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
+
+   This will ensure that a cookie is only retrieved if the origin is the
+   same as the one it was set on.
+
+3.1.5.  The Cookie Header Field
 
    The cookie header field outlined in Section 5.5.2 of COOKIES
    (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
