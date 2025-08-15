@@ -162,26 +162,26 @@ Note the major change here is extracting the port and scheme from the request an
 ## Garbage Colletion
 The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
 
-To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies. In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
+To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
+In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
 Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).
 
 New eviction policy (per eTLD+1):
-Expired cookies (Most preferred to evict)
-For each {priority, secureness} tuple : 
-{
-{Low, insecure},
-{Low, secure}, 
-{Medium, insecure}, 
-{High, insecure}, 
-{Medium, secure}, 
-{High, secure}
-}
-Aliased domain cookies (in legacy mode)
-Aliased origin cookies (in legacy mode)
-Unique domain cookies
-Unique origin cookies
+1. Expired cookies (Most preferred to evict)
+2. For each {priority, secureness} tuple :
+3. {Low, insecure}
+4. {Low, secure}
+5. {Medium, insecure}
+6. {High, insecure}
+7. {Medium, secure}
+8. {High, secure}
+9. Aliased domain cookies (in legacy mode)
+10. Aliased origin cookies (in legacy mode)
+11. Unique domain cookies
+12. Unique origin cookies
 
-Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high priority secure cookies (and is inherited from the legacy behavior).
+Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
+priority secure cookies (and is inherited from the legacy behavior).
 
 # Security Considerations
 
