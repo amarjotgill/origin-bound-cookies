@@ -240,13 +240,13 @@ Table of Contents
    |      defined, but has to be one of "strict-or-less", "lax-or-less",
    |      "unset-or-less", or "none".
    |  
-   |  6.  let sourcePort be request's URL's port.
+   |  6.  let port be request's URL's port.
    |  
-   |  7.  let sourceScheme be request's URL's scheme.
+   |  7.  let scheme be request's URL's scheme.
    |  
    |  8.  Let cookies be the result of running Retrieve Cookies given
-   |      isSecure, host, path, httpOnlyAllowed, sameSite, sourcePort,
-   |      and sourceScheme.
+   |      isSecure, host, path, httpOnlyAllowed, sameSite, port, and
+   |      scheme.
    |  
    |  9.  Return the result of running Serialize Cookies given cookies.
 
