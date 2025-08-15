@@ -115,7 +115,7 @@ The new behavior will behave as the following.
 
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
-### Storage
+## Storage
 Altering the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie) will also be neccessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a seperate cookie.
 
 Step number 18 of this section will need to be altered to:
@@ -129,13 +129,18 @@ Step number 18 of this section will need to be altered to:
 
 Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 
-### Retrieve Cookies
+## Retrieve Cookies
 
 The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
+The following will need to be added to step 2:
+
+1.  port `port-matches` cookie's port.
+2.  scheme `scheme-matches` cookie's scheme.
+
 This will ensure that a cookie is only retrieved if the origin is the same as the one it was set on.
 
-### The Cookie Header Field
+## The Cookie Header Field
 The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
 
 The following will need to be altered:
