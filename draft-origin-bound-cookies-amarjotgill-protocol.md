@@ -120,7 +120,7 @@ The new behavior will behave as the following.
 
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
-## Shadowing Cookies
+### Shadowing Cookies
 Flexible Cookies Using the Domain Attribute
 A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
 
