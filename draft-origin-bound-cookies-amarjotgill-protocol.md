@@ -178,7 +178,7 @@ This will ensure that a cookie is only retrieved if the request origin is equal 
 ## The Cookie Header Field
 The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
 
-The following will need to be altered:
+It will be altered to the following:
 
 {:quote}
 >1. Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.
