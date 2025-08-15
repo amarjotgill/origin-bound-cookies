@@ -131,12 +131,12 @@ Note the addition of step number 3. This step will prevent a cookie with differi
 
 ### Retrieve Cookies 
 
-The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies)
+The Retrieve Cookies algorithm will need to be updated in [Section 5.5.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
 The following will need to be an addition to step 2:
 
-1. scheme `scheme-matches` cookie's scheme.
-2. port `port-matches` cookie's port.
+1.  scheme `scheme-matches` cookie's scheme.
+2.  port `port-matches` cookie's port.
 
 This will ensure that a cookie is only retrieved if the origin is the same as the one it was set on.
 
