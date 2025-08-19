@@ -63,10 +63,14 @@ This document proposes changes to {{COOKIES}} by bounding cookies to port and sc
 
 
 # Conventions and Definitions
+
 ## Terminology
+
 An aliasing cookie refers to a cookie which shares the same cookie-name, cookie-value and sub domain with another cookie but differs via scheme or port.
 
 Legacy mode refers to the opt out enterprise policy for Origin-Bound cookies, when legacy mode is active, cookies will behave as they did pre Origin-Bound cookies. This means cookies that are deemed aliasing will overwrite each other now as they did previous to Origin-Bound cookies.
+
+{::boilerplate bcp14-tagged}
 
 # Server Requirements
 
