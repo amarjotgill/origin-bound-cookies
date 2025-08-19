@@ -66,6 +66,7 @@ Table of Contents
    1.  Introduction
      1.1.  Examples
    2.  Conventions and Definitions
+     2.1.  Terminology
    3.  Server Requirements
      3.1.  Origin-Bound Behavior
        3.1.1.  Port Bound
@@ -117,15 +118,23 @@ Table of Contents
 
 2.  Conventions and Definitions
 
-   ## Terminology An aliasing cookie refers to a cookie which shares the
-   same cookie-name, cookie-value and sub domain with another cookie but
-   differs via scheme or port.
+2.1.  Terminology
+
+   An aliasing cookie refers to a cookie which shares the same cookie-
+   name, cookie-value and sub domain with another cookie but differs via
+   scheme or port.
 
    Legacy mode refers to the opt out enterprise policy for Origin-Bound
    cookies, when legacy mode is active, cookies will behave as they did
    pre Origin-Bound cookies.  This means cookies that are deemed
    aliasing will overwrite each other now as they did previous to
    Origin-Bound cookies.
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 3.  Server Requirements
 
@@ -386,6 +395,15 @@ Table of Contents
    [COOKIES]  "Cookies HTTP State Management Mechanism", May 2025,
               <https://datatracker.ietf.org/doc/draft-ietf-httpbis-
               layered-cookies/>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 Acknowledgments
 
