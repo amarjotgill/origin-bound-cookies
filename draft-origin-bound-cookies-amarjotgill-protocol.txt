@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                            15 August 2025
-Expires: 16 February 2026
+Intended status: Informational                            19 August 2025
+Expires: 20 February 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 February 2026.
+   This Internet-Draft will expire on 20 February 2026.
 
 Copyright Notice
 
@@ -116,6 +116,16 @@ Table of Contents
    improve cookie security.
 
 2.  Conventions and Definitions
+
+   ## Terminology An aliasing cookie refers to a cookie which shares the
+   same cookie-name, cookie-value and sub domain with another cookie but
+   differs via scheme or port.
+
+   Legacy mode refers to the opt out enterprise policy for Origin-Bound
+   cookies, when legacy mode is active, cookies will behave as they did
+   pre Origin-Bound cookies.  This means cookies that are deemed
+   aliasing will overwrite each other now as they did previous to
+   Origin-Bound cookies.
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
