@@ -72,7 +72,7 @@ Legacy mode refers to the opt out enterprise policy for Origin-Bound cookies, wh
 
 {::boilerplate bcp14-tagged}
 
-# Server Requirements
+# User Agent Requirements
 
 ## Origin-Bound Behavior
 
