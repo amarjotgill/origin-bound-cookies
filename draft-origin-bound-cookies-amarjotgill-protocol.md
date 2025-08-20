@@ -164,7 +164,7 @@ Note the major change here is extracting the port and scheme from the request an
 
 
 ## Garbage Collection
-The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.4.4 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies).
+The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-store-eviction).
 
 To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
 In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
@@ -180,10 +180,8 @@ New eviction policy (per eTLD+1):
 6. {High, insecure}
 7. {Medium, secure}
 8. {High, secure}
-9. Aliased domain cookies (in legacy mode)
-10. Aliased origin cookies (in legacy mode)
-11. Unique domain cookies
-12. Unique origin cookies
+9. Unique domain cookies
+10. Unique origin cookies
 
 Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
 priority secure cookies (and is inherited from the legacy behavior).
