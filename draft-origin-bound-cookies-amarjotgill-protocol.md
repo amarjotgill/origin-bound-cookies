@@ -112,11 +112,9 @@ Then add the concept of scheme matching which helps to simplify checking if a co
 
 Schemes are represented as strings, A and B, are considered `scheme-matches` if one of the following is true:
 
-1.  The cookie's `host-only-flag` is `false`.
-2.  A exactly matches B
-3.  A and B are both in [“http”, “ws”]
-4.  A and B are both in [“https”, “wss”]
-
+1.  A exactly matches B
+2.  A and B are both in [“http”, “ws”]
+3.  A and B are both in [“https”, “wss”]
 
 Else they are considered incompatible.
 
