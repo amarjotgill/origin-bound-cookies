@@ -1329,25 +1329,9 @@ appear in all capitals, as shown here.<a href="#section-2.1-2" class="pilcrow">�
 <p id="section-3.2-1">We update the storage model in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie">Section 5.4.3 of COOKIES</a> to ensure that port and scheme are being considered when comparing with existing cookies.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Step number 18 of this section will need to be altered to:<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <blockquote id="section-3.2-3">
-          <ol start="1" type="1" class="normal type-1" id="section-3.2-3.1">
-<li id="section-3.2-3.1.1">
-              <p id="section-3.2-3.1.1.1">If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.<a href="#section-3.2-3.1.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li id="section-3.2-3.1.2">
-              <p id="section-3.2-3.1.2.1">If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.<a href="#section-3.2-3.1.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li id="section-3.2-3.1.3">
-              <p id="section-3.2-3.1.3.1">If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.<a href="#section-3.2-3.1.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li id="section-3.2-3.1.4">
-              <p id="section-3.2-3.1.4.1">Set cookie's creation-time to oldCookie's creation-time.<a href="#section-3.2-3.1.4.1" class="pilcrow">¶</a></p>
-</li>
-            <li id="section-3.2-3.1.5">
-              <p id="section-3.2-3.1.5.1">Remove oldCookie from the user agent's cookie store.<a href="#section-3.2-3.1.5.1" class="pilcrow">¶</a></p>
-</li>
-          </ol>
+          <p id="section-3.2-3.1">If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's port or scheme is not equal to oldCookie's port or scheme.<a href="#section-3.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.2-4">Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieve-cookies">
