@@ -80,17 +80,17 @@ Legacy mode refers to the opt out enterprise policy for Origin-Bound cookies, wh
 
 First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
-Below is the definition of the source-port attribute.
+Below is the definition of the port attribute.
 
 {:quote}
-> A cookie's source-port. It is initially "unset".
+> A cookie's port. It is initially "unset" and is an integer type.
 
 Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
 An integer `port-matches` a given cookie if any of the following conditions are true:
 
 1.  The cookie's `host-only-flag` is `false`.
-2.  The integer exactly matches the cookie's `port` value.
+2.  The integer is equal to the cookie's `port` value.
 
 Example:
 
@@ -106,7 +106,7 @@ First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft
 Below is the definition of the source-scheme attribute.
 
 {:quote}
-> A cookie's source-scheme. It is initially "unset".
+> A cookie's source-scheme. It is initially "unset" and is a string type.
 
 Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
@@ -127,37 +127,8 @@ The new behavior will behave as the following.
 
 A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.
 
-### Shadowing Cookies
-Flexible Cookies Using the Domain Attribute
-A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
-
-Any host that matches the specified domain.
-
-Any port on those hosts.
-
-Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.
-
-The "Shadowing" Security Issue
-This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
-
-Here's an example:
-
-A user visits https://trusted.example.com, which sets a secure cookie:
-
-Set-Cookie: trustedValue=1234
-
-Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:
-
-Set-Cookie: trustedValue=evil1234; Domain=example.com
-
-The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.
-
-The Solution:
-
-To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.
-
 ## Storage
-Altering the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie) will also be necessary this is due to the fact that is the newCookie and oldCookie's scheme and port do not exact match then instead of overwriting the new cookie is stored as a separate cookie.
+We update the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie) to ensure that port and scheme are being considered when comparing with existing cookies.
 
 Step number 18 of this section will need to be altered to:
 
@@ -227,7 +198,54 @@ priority secure cookies (and is inherited from the legacy behavior).
 
 # Security Considerations
 
-This feature does not introduce any new security considerations. The feature only stores and uses more of the already available data.
+Origin-Bound Cookies is considered net positive for security, the following would be mitigated by it.
+
+Weak integrity: This occurs when an insecure site, controlled by a network attacker, sets a malicious cookie that is then sent to the secure version of that site. OBC binds
+cookies to their setting origin, preventing such malicious cookies from being accessed by a different origin.
+
+Weak confidentiality: This refers to an attacker reading sensitive user data set by a secure site, which is unintentionally sent to an insecure site. OBC ensures that cookies are
+only accessible by the same origin that set them, preventing this type of data leakage.
+
+
+One security concern is how to handle clients that do not support OBC, this  is handled by the following, when a cookie has a valid Domain attribute specified (hereby called a
+“domain cookie”) that cookie has relaxed bindings. Namely, the cookie may be sent to:
+ 1. any host which domain matches the Domain value (This is unchanged from legacy behavior)
+ 2. any port value
+
+Importantly a domain cookie is still bound to the scheme of its setting origin.
+
+This behavior allows developers to opt-out of the stronger protections of an origin cookie which can help with compatibility for usages that need a particular cookie available
+across hosts and/or ports.
+
+
+## Shadowing Cookies
+Flexible Cookies Using the Domain Attribute
+A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
+
+Any host that matches the specified domain.
+
+Any port on those hosts.
+
+Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.
+
+The "Shadowing" Security Issue
+This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
+
+Here's an example:
+
+A user visits https://trusted.example.com, which sets a secure cookie:
+
+Set-Cookie: trustedValue=1234
+
+Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:
+
+Set-Cookie: trustedValue=evil1234; Domain=example.com
+
+The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.
+
+The Solution:
+
+To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.
 
 
 # IANA Considerations
