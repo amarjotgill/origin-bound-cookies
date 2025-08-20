@@ -124,12 +124,6 @@ Table of Contents
    name, cookie-value and sub domain with another cookie but differs via
    scheme or port.
 
-   Legacy mode refers to the opt out enterprise policy for Origin-Bound
-   cookies, when legacy mode is active, cookies will behave as they did
-   pre Origin-Bound cookies.  This means cookies that are deemed
-   aliasing will overwrite each other now as they did previous to
-   Origin-Bound cookies.
-
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in
