@@ -1398,7 +1398,7 @@ appear in all capitals, as shown here.<a href="#section-2.1-2" class="pilcrow">�
         <h3 id="name-garbage-collection">
 <a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-garbage-collection" class="section-name selfRef">Garbage Collection</a>
         </h3>
-<p id="section-3.5-1">The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-garbage-collect-cookies">Section 5.4.4 of COOKIES</a>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-1">The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-store-eviction">Section 5.2 of COOKIES</a>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 <p id="section-3.5-2">To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
 In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
 Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
@@ -1429,16 +1429,10 @@ Similarly, domain cookies on an origin will be preferred for eviction before ori
             <p id="section-3.5-4.8.1">{High, secure}<a href="#section-3.5-4.8.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-3.5-4.9">
-            <p id="section-3.5-4.9.1">Aliased domain cookies (in legacy mode)<a href="#section-3.5-4.9.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-4.9.1">Unique domain cookies<a href="#section-3.5-4.9.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-3.5-4.10">
-            <p id="section-3.5-4.10.1">Aliased origin cookies (in legacy mode)<a href="#section-3.5-4.10.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-3.5-4.11">
-            <p id="section-3.5-4.11.1">Unique domain cookies<a href="#section-3.5-4.11.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-3.5-4.12">
-            <p id="section-3.5-4.12.1">Unique origin cookies<a href="#section-3.5-4.12.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-4.10.1">Unique origin cookies<a href="#section-3.5-4.10.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-3.5-5">Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
