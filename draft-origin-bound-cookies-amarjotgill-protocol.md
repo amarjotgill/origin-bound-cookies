@@ -129,13 +129,9 @@ We update the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/htt
 Step number 18 of this section will need to be altered to:
 
 {:quote}
-> 1. If httpOnlyAllowed is false and oldCookie's http-only is true, then return null.
-> 2. If cookie's secure is equal to oldCookie's secure, cookie's same-site is equal to oldCookie's same-site, and cookie's expiry-time is equal to oldCookie's expiry-time, then return null.
-> 3. If cookie's port or scheme is not equal to oldCookie's port or scheme, then stop here and do not do steps 4 and 5.
-> 4. Set cookie's creation-time to oldCookie's creation-time.
-> 5. Remove oldCookie from the user agent's cookie store.
+> If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's port or scheme is not equal to oldCookie's port or scheme.
 
-Note the addition of step number 3. This step will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
+Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 
 ## Retrieve Cookies
 
