@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                            19 August 2025
-Expires: 20 February 2026
+Intended status: Informational                            20 August 2025
+Expires: 21 February 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 February 2026.
+   This Internet-Draft will expire on 21 February 2026.
 
 Copyright Notice
 
@@ -67,7 +67,7 @@ Table of Contents
      1.1.  Examples
    2.  Conventions and Definitions
      2.1.  Terminology
-   3.  Server Requirements
+   3.  User Agent Requirements
      3.1.  Origin-Bound Behavior
        3.1.1.  Port Bound
        3.1.2.  Scheme Bound
@@ -136,7 +136,7 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Server Requirements
+3.  User Agent Requirements
 
 3.1.  Origin-Bound Behavior
 
