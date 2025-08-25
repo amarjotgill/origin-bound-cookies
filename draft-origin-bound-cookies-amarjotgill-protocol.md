@@ -37,7 +37,7 @@ normative:
 
 
 informative:
- COOKIE:
+ Cookies-Lack-Integrity:
     title: Cookies Lack Integrity Real-World Implications
     date: 12 August 2015
     target: https://www.microsoft.com/en-us/research/wp-content/uploads/2017/01/sec15_cookies-lack-integrity-published.pdf
