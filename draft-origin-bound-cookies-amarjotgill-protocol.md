@@ -30,7 +30,6 @@ author:
     email: "amarjotgill@google.com"
 
 normative:
-
  COOKIES:
     title: Cookies HTTP State Management Mechanism
     date: 14 May 2025
@@ -38,7 +37,7 @@ normative:
 
 
 informative:
-  
+
 
 --- abstract
 
