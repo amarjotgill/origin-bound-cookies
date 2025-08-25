@@ -221,7 +221,7 @@ Any port on those hosts.
 
 Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.
 
-The "Shadowing" Security Issue
+The "Shadowing" Security Issue which is described in {{Cookies-Lack-Integrity}}
 This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
 
 Here's an example:
