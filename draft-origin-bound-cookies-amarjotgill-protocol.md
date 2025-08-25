@@ -40,7 +40,7 @@ informative:
  COOKIE:
     title: Cookies HTTP State Management Mechanism
     date: 14 May 2025
-    target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
+    target: https://www.microsoft.com/en-us/research/wp-content/uploads/2017/01/sec15_cookies-lack-integrity-published.pdf
 
 --- abstract
 
