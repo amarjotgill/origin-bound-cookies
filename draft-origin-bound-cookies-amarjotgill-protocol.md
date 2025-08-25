@@ -37,7 +37,10 @@ normative:
 
 
 informative:
-
+ COOKIES:
+    title: Cookies HTTP State Management Mechanism
+    date: 14 May 2025
+    target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
 
 --- abstract
 
