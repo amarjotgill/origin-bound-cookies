@@ -415,8 +415,8 @@ Table of Contents
 
 6.2.  Informative References
 
-   [COOKIE]   "Cookies HTTP State Management Mechanism", May 2025,
-              <https://www.microsoft.com/en-us/research/wp-
+   [COOKIE]   "Cookies Lack Integrity Real-World Implications", August
+              2015, <https://www.microsoft.com/en-us/research/wp-
               content/uploads/2017/01/sec15_cookies-lack-integrity-
               published.pdf>.
 
