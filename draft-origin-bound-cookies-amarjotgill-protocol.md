@@ -38,11 +38,10 @@ normative:
 
 
 informative:
-
- Cookies-Lack-Integrity:
-    title: Cookies HTTP State Management Mechanism
-    date: 14 May 2025
-    target: https://datatracker.ietf.org/doc/draft-ietf-httpbis-layered-cookies/
+  CHIPS-Explainer:
+    target: https://github.com/privacycg/CHIPS
+    title: Cookies Having Independent Partitioned State (CHIPS) explainer
+    date: false
   
 
 --- abstract
