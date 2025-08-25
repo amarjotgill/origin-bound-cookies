@@ -416,8 +416,9 @@ Table of Contents
 6.2.  Informative References
 
    [COOKIE]   "Cookies HTTP State Management Mechanism", May 2025,
-              <https://datatracker.ietf.org/doc/draft-ietf-httpbis-
-              layered-cookies/>.
+              <https://www.microsoft.com/en-us/research/wp-
+              content/uploads/2017/01/sec15_cookies-lack-integrity-
+              published.pdf>.
 
 Acknowledgments
 
