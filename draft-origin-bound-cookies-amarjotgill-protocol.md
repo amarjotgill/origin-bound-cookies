@@ -46,7 +46,7 @@ informative:
 
 --- abstract
 
-This draft introduces Origin-Bound Cookies which updates {{COOKIES}} aiming to make cookies more secure by default through binding cookies by port and scheme.
+This draft introduces Origin-Bound Cookies which updates {{COOKIES}} and {{CHIPS-Explainer}} aiming to make cookies more secure by default through binding cookies by port and scheme.
 
 --- middle
 
