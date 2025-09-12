@@ -150,14 +150,15 @@ The following will need to be added to step 2:
 This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
 
 ## Cookie Store Eviction
- The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined
-[Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
+ The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
 
 Step 2 will need to be updated to the following:
+
 {:quote}
 > Sort all insecureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.
 
 Step 4 will also need to be updated to the following:
+
 {:quote}
 > Sort all secureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.
 
