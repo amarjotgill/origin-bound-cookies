@@ -111,9 +111,9 @@ Below is the definition of the scheme attribute.
 
 Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
-Schemes are represented as strings, A and B, are considered `scheme-matches` if one of the following is true:
+ A string A Scheme-Matches a string B if one of the following is true:
 
-1.  A exactly matches B
+1.  A equals B
 2.  A and B are both in [“http”, “ws”]
 3.  A and B are both in [“https”, “wss”]
 
