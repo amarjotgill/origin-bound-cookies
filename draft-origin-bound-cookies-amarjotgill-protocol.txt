@@ -73,14 +73,15 @@ Table of Contents
        3.1.2.  Scheme Bound
      3.2.  Storage
      3.3.  Retrieve Cookies
-     3.4.  The Cookie Header Field
-     3.5.  Garbage Collection
-   4.  Security Considerations
-     4.1.  Shadowing Cookies
-   5.  IANA Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+     3.4.  Garbage Collection
+   4.  Requirements Specific to Non-Browser User Agents
+     4.1.  The Cookie Header Field
+   5.  Security Considerations
+     5.1.  Shadowing Cookies
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Author's Address
 
@@ -243,42 +244,7 @@ Table of Contents
    This will ensure that a cookie is only retrieved if the request
    origin is equal to the cookie's origin
 
-3.4.  The Cookie Header Field
-
-   The cookie header field outlined in Section 5.5.2 of COOKIES
-   (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
-   cookies.html#name-the-cookie-header-field) will need to be altered.
-
-   It will be altered to the following:
-
-   |  1.  Let isSecure be a boolean indicating whether request's URL's
-   |      scheme is deemed secure, in an implementation-defined manner.
-   |  
-   |  2.  Let host be request's host.
-   |  
-   |  3.  Let path be request's URL's path.
-   |  
-   |  4.  Let httpOnlyAllowed be true.
-   |  
-   |  5.  Let sameSite be a string whose value is implementation-
-   |      defined, but has to be one of "strict-or-less", "lax-or-less",
-   |      "unset-or-less", or "none".
-   |  
-   |  6.  let port be request's URL's port.
-   |  
-   |  7.  let scheme be request's URL's scheme.
-   |  
-   |  8.  Let cookies be the result of running Retrieve Cookies given
-   |      isSecure, host, path, httpOnlyAllowed, sameSite, port, and
-   |      scheme.
-   |  
-   |  9.  Return the result of running Serialize Cookies given cookies.
-
-   Note the major change here is extracting the port and scheme from the
-   request and running the new version of Retrieve Cookies based on
-   that.
-
-3.5.  Garbage Collection
+3.4.  Garbage Collection
 
    The last algorithm that will need to be updated is the Garbage
    Collection algorithm outlined in Section 5.2 of COOKIES
@@ -320,7 +286,44 @@ Table of Contents
    insecure cookies from evicting medium or high priority secure cookies
    (and is inherited from the legacy behavior).
 
-4.  Security Considerations
+4.  Requirements Specific to Non-Browser User Agents
+
+4.1.  The Cookie Header Field
+
+   The cookie header field outlined in Section 5.5.2 of COOKIES
+   (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
+   cookies.html#name-the-cookie-header-field) will need to be altered.
+
+   It will be altered to the following:
+
+   |  1.  Let isSecure be a boolean indicating whether request's URL's
+   |      scheme is deemed secure, in an implementation-defined manner.
+   |  
+   |  2.  Let host be request's host.
+   |  
+   |  3.  Let path be request's URL's path.
+   |  
+   |  4.  Let httpOnlyAllowed be true.
+   |  
+   |  5.  Let sameSite be a string whose value is implementation-
+   |      defined, but has to be one of "strict-or-less", "lax-or-less",
+   |      "unset-or-less", or "none".
+   |  
+   |  6.  let port be request's URL's port.
+   |  
+   |  7.  let scheme be request's URL's scheme.
+   |  
+   |  8.  Let cookies be the result of running Retrieve Cookies given
+   |      isSecure, host, path, httpOnlyAllowed, sameSite, port, and
+   |      scheme.
+   |  
+   |  9.  Return the result of running Serialize Cookies given cookies.
+
+   Note the major change here is extracting the port and scheme from the
+   request and running the new version of Retrieve Cookies based on
+   that.
+
+5.  Security Considerations
 
    Origin-Bound Cookies is considered net positive for security, the
    following would be mitigated by it.
@@ -351,7 +354,7 @@ Table of Contents
    usages that need a particular cookie available across hosts and/or
    ports.
 
-4.1.  Shadowing Cookies
+5.1.  Shadowing Cookies
 
    Flexible Cookies Using the Domain Attribute A cookie that includes a
    Domain attribute is called a "domain cookie" and has more relaxed
@@ -396,13 +399,13 @@ Table of Contents
    ensures that the more specific and secure cookie cannot be overridden
    by a less secure one.
 
-5.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [COOKIES]  "Cookies HTTP State Management Mechanism", May 2025,
               <https://datatracker.ietf.org/doc/draft-ietf-httpbis-
@@ -417,7 +420,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [Cookies-Lack-Integrity]
               "Cookies Lack Integrity Real-World Implications", August
