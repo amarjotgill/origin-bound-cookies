@@ -84,7 +84,7 @@ First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft
 Below is the definition of the port attribute.
 
 {:quote}
-> A cookie's port. It is initially "unset" and is an integer type.
+> A cookie's port is either null or a 16-bit unsigned integer.  It is initially null.
 
 Then add the concept of port matching which helps to simplify checking if a cookie would match a port value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
@@ -102,12 +102,12 @@ A cookie set by origin https://example.com will only ever be sent to https://exa
 
 ### Scheme Bound
 
-First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-scheme to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
+First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding scheme to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
-Below is the definition of the source-scheme attribute.
+Below is the definition of the scheme attribute.
 
 {:quote}
-> A cookie's source-scheme. It is initially "unset" and is a string type.
+> A cookie's scheme is null or a byte sequence.  It is initially null.
 
 Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
 
