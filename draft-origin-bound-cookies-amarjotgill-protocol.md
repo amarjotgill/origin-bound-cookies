@@ -172,9 +172,9 @@ New eviction policy (per eTLD+1):
 Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
 priority secure cookies (and is inherited from the legacy behavior).
 
-# Requirements Specific to Non-Browser User Agents
+## Requirements Specific to Non-Browser User Agents
 
-## The Cookie Header Field
+### The Cookie Header Field
 The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
 
 It will be altered to the following:
