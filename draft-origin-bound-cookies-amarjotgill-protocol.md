@@ -149,25 +149,6 @@ The following will need to be added to step 2:
 
 This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
 
-## The Cookie Header Field
-The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
-
-It will be altered to the following:
-
-{:quote}
->1. Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.
->2. Let host be request's host.
->3. Let path be request's URL's path.
->4. Let httpOnlyAllowed be true.
->5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
->6. let port be request's URL's port.
->7. let scheme be request's URL's scheme.
->8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.
->9. Return the result of running Serialize Cookies given cookies.
-
-Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
-
-
 ## Garbage Collection
 The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-store-eviction).
 
@@ -190,6 +171,27 @@ New eviction policy (per eTLD+1):
 
 Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
 priority secure cookies (and is inherited from the legacy behavior).
+
+# Requirements Specific to Non-Browser User Agents
+
+## The Cookie Header Field
+The cookie header field outlined in [Section 5.5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-the-cookie-header-field) will need to be altered.
+
+It will be altered to the following:
+
+{:quote}
+>1. Let isSecure be a boolean indicating whether request's URL's scheme is deemed secure, in an implementation-defined manner.
+>2. Let host be request's host.
+>3. Let path be request's URL's path.
+>4. Let httpOnlyAllowed be true.
+>5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
+>6. let port be request's URL's port.
+>7. let scheme be request's URL's scheme.
+>8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.
+>9. Return the result of running Serialize Cookies given cookies.
+
+Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
+
 
 # Security Considerations
 
