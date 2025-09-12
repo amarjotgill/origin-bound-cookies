@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                            25 August 2025
-Expires: 26 February 2026
+Intended status: Informational                         12 September 2025
+Expires: 16 March 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2026.
+   This Internet-Draft will expire on 16 March 2026.
 
 Copyright Notice
 
@@ -145,7 +145,8 @@ Table of Contents
 
    Below is the definition of the port attribute.
 
-   |  A cookie's port.  It is initially "unset" and is an integer type.
+   |  A cookie's port is either null or a 16-bit unsigned integer.  It
+   |  is initially null.
 
    Then add the concept of port matching which helps to simplify
    checking if a cookie would match a port value We can do that by
@@ -172,13 +173,13 @@ Table of Contents
 
    First, alter Section 5.1.2 of COOKIES (https://httpwg.org/http-
    extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-
-   struct) by adding source-scheme to the Cookie Struct, this would be
+   struct) by adding scheme to the Cookie Struct, this would be
    necessary to keep track of the port the cookie was set on.
 
-   Below is the definition of the source-scheme attribute.
+   Below is the definition of the scheme attribute.
 
-   |  A cookie's source-scheme.  It is initially "unset" and is a string
-   |  type.
+   |  A cookie's scheme is null or a byte sequence.  It is initially
+   |  null.
 
    Then add the concept of scheme matching which helps to simplify
    checking if a cookie would match a scheme value We can do that by
