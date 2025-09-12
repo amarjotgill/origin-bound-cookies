@@ -149,28 +149,20 @@ The following will need to be added to step 2:
 
 This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
 
-## Garbage Collection
-The last algorithm that will need to be updated is the Garbage Collection algorithm outlined in [Section 5.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-store-eviction).
+## Cookie Store Eviction
+ The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined 
+[Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
 
-To prevent an insecure origin from deleting the cookies of secure origins (of the same eTLD+1) the eviction policy will be modified to prefer non-secure cookies before secure cookies.
-In the context of eviction policy secure cookies are cookies that specify the Secure attribute or cookies that are set by a secure scheme.
-Similarly, domain cookies on an origin will be preferred for eviction before origin cookies on an origin (of the same scheme://eTLD+1).
+Step 2 will need to be updated to the following:
+{:quote}
+> Sort all insecureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.
 
-New eviction policy (per eTLD+1):
+Step 4 will also need to be updated to the following:
+{:quote}
+	> Sort all secureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.
 
-1. Expired cookies (Most preferred to evict)
-2. For each {priority, secureness} tuple :
-3. {Low, insecure}
-4. {Low, secure}
-5. {Medium, insecure}
-6. {High, insecure}
-7. {Medium, secure}
-8. {High, secure}
-9. Unique domain cookies
-10. Unique origin cookies
+Updating these steps will ensure that domain cookies for each origin are deleted before any other cookie.
 
-Under this policy a unique high priority secure origin cookie would be the least preferred to evict. The tuple ordering prevents any insecure cookies from evicting medium or high
-priority secure cookies (and is inherited from the legacy behavior).
 
 ## Requirements Specific to Non-Browser User Agents
 
