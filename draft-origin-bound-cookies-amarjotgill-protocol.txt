@@ -187,10 +187,9 @@ Table of Contents
    (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
    cookies.html#name-subcomponent-algorithms).
 
-   Schemes are represented as strings, A and B, are considered scheme-
-   matches if one of the following is true:
+   A string A Scheme-Matches a string B if one of the following is true:
 
-   1.  A exactly matches B
+   1.  A equals B
 
    2.  A and B are both in [“http”, “ws”]
 

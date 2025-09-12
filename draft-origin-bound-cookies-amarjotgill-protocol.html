@@ -1309,10 +1309,10 @@ appear in all capitals, as shown here.<a href="#section-2.1-2" class="pilcrow">�
             <p id="section-3.1.2-3.1">A cookie's scheme is null or a byte sequence.  It is initially null.<a href="#section-3.1.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.1.2-4">Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms">Section 5.3 of COOKIES</a>.<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.1.2-5">Schemes are represented as strings, A and B, are considered <code>scheme-matches</code> if one of the following is true:<a href="#section-3.1.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-5">A string A Scheme-Matches a string B if one of the following is true:<a href="#section-3.1.2-5" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.1.2-6">
 <li id="section-3.1.2-6.1">
-              <p id="section-3.1.2-6.1.1">A exactly matches B<a href="#section-3.1.2-6.1.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.2-6.1.1">A equals B<a href="#section-3.1.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-3.1.2-6.2">
               <p id="section-3.1.2-6.2.1">A and B are both in [“http”, “ws”]<a href="#section-3.1.2-6.2.1" class="pilcrow">¶</a></p>
