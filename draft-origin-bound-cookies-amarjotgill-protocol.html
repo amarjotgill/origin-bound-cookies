@@ -1308,7 +1308,9 @@ appear in all capitals, as shown here.<a href="#section-2.1-2" class="pilcrow">�
 <blockquote id="section-3.1.2-3">
             <p id="section-3.1.2-3.1">A cookie's scheme is null or a byte sequence.  It is initially null.<a href="#section-3.1.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.1.2-4">Then add the concept of scheme matching which helps to simplify checking if a cookie would match a scheme value We can do that by adding a new section under <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms">Section 5.3 of COOKIES</a>.<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-4">To simplify cookie-to-scheme matching, a new scheme matching concept will be introduced. This is necessary because initial WebSocket connections, in addition to HTTP and HTTPS,
+can also set and send cookies. To maintain WebSocket compatibility, scheme comparisons will look for "compatible schemes" rather than exact string matches. This will be achieved
+by adding a new section under <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms">Section 5.3 of COOKIES</a>.<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
 <p id="section-3.1.2-5">A string A Scheme-Matches a string B if one of the following is true:<a href="#section-3.1.2-5" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.1.2-6">
 <li id="section-3.1.2-6.1">
