@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                         12 September 2025
-Expires: 16 March 2026
+Intended status: Informational                         19 September 2025
+Expires: 23 March 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2026.
+   This Internet-Draft will expire on 23 March 2026.
 
 Copyright Notice
 
@@ -126,6 +126,12 @@ Table of Contents
    An aliasing cookie refers to a cookie which shares the same cookie-
    name, cookie-value and sub domain with another cookie but differs via
    scheme or port.
+
+   A domain cookie is a cookie which has the Domain= parameter set in
+   its field.
+
+   An origin cookie is a set of cookies which are set on each origin, an
+   origin being the same port and scheme value.
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
