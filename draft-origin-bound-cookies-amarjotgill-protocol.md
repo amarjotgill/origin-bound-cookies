@@ -212,7 +212,7 @@ across hosts and/or ports.
 
 
 ## Shadowing Cookies
-Flexible Cookies Using the Domain Attribute
+
 A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
 
 Any host that matches the specified domain.
