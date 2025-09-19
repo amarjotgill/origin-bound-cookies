@@ -147,6 +147,8 @@ Note the addition of checking port and scheme, this will prevent a cookie with d
 
 The Retrieve Cookies algorithm will need to be updated in [Section 5.4.5 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
+Retrieve Cookies will now take a port and scheme value.
+
 The following will need to be added to step 2:
 
 1.  port `port-matches` cookie's port.
