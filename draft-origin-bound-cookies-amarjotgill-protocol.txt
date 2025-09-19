@@ -350,7 +350,8 @@ Table of Contents
    [Cookies-Lack-Integrity] This flexibility creates a potential
    vulnerability where a secure "origin cookie" (one without a Domain
    attribute) could be overridden or "shadowed" by a less-secure domain
-   cookie.
+   cookie.  Removal for Secure could be a possible future consideration
+   for the HTTP WG.
 
    Here's an example:
 
