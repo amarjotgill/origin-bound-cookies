@@ -241,6 +241,8 @@ Table of Contents
    Section 5.4.5 of COOKIES (https://httpwg.org/http-extensions/draft-
    ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
+   Retrieve Cookies will now take a port and scheme value.
+
    The following will need to be added to step 2:
 
    1.  port port-matches cookie's port.

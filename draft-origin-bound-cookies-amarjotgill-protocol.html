@@ -1357,16 +1357,17 @@ by adding a new section under <a href="https://httpwg.org/http-extensions/draft-
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-retrieve-cookies" class="section-name selfRef">Retrieve Cookies</a>
         </h3>
 <p id="section-3.3-1">The Retrieve Cookies algorithm will need to be updated in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies">Section 5.4.5 of COOKIES</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">The following will need to be added to step 2:<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.3-3">
-<li id="section-3.3-3.1">
-            <p id="section-3.3-3.1.1">port <code>port-matches</code> cookie's port.<a href="#section-3.3-3.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">Retrieve Cookies will now take a port and scheme value.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">The following will need to be added to step 2:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3.3-4">
+<li id="section-3.3-4.1">
+            <p id="section-3.3-4.1.1">port <code>port-matches</code> cookie's port.<a href="#section-3.3-4.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-3.3-3.2">
-            <p id="section-3.3-3.2.1">scheme <code>scheme-matches</code> cookie's scheme.<a href="#section-3.3-3.2.1" class="pilcrow">¶</a></p>
+          <li id="section-3.3-4.2">
+            <p id="section-3.3-4.2.1">scheme <code>scheme-matches</code> cookie's scheme.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
-<p id="section-3.3-4">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.3-5">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin<a href="#section-3.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cookie-store-eviction">
