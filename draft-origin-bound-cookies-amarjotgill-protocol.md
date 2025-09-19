@@ -91,7 +91,7 @@ Below is the definition of the port attribute.
 {:quote}
 > A cookie's port is either null or a 16-bit unsigned integer.  It is initially null.
 
-For port matching algorithms below will be updated to conmpare integers to ensure port values match.
+For port matching algorithms below will be updated to compare integers to ensure port values match.
 
 Example:
 
@@ -134,9 +134,10 @@ We update the storage model in [Section 5.4.3 of COOKIES](https://httpwg.org/htt
 Step number 18 of this section will need to be altered to:
 
 {:quote}
-> If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's port or scheme is not equal to oldCookie's port or scheme.
+> If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's port or scheme is not equal to oldCookie's port or scheme, if the domain attribute is set ignore the port checking.
 
 Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
+Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.
 
 ## Retrieve Cookies
 
