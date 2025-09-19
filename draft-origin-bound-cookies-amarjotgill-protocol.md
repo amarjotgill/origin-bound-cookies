@@ -223,6 +223,8 @@ Importantly, the cookie remains bound to the scheme (e.g., https) of the site th
 
 The "Shadowing" Security Issue as described in {{Cookies-Lack-Integrity}}
 This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
+Removal for Secure could be a possible future consideration for the HTTP WG.
+
 
 Here's an example:
 
