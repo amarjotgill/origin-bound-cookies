@@ -89,8 +89,10 @@ Table of Contents
 
    Cookies are one of the few components of the web platform that are
    not scoped to the origin by default.  This difference in scoping
-   means that cookies have weaken confidentiality and integrity compared
-   with other storage APIs on the web platform.
+   means that cookies have weaken confidentiality (https://httpwg.org/
+   http-extensions/draft-ietf-httpbis-layered-cookies.html#name-weak-
+   confidentiality) compared with other storage APIs on the web
+   platform.
 
 1.1.  Examples
 
