@@ -61,7 +61,7 @@ Cookies are one of the few components of the web platform that are not scoped to
 
 All of these examples are possible because cookies by default do not care about the scheme or port of their connection. As long as the host matches the cookie will be accessible.
 
-This document proposes changes to {{COOKIES}} by bounding cookies to port and scheme which will prevent against these attacks and greatly improve cookie security.
+This document proposes changes to {{COOKIES}} by binding cookies to port and scheme which will prevent against these attacks and greatly improve cookie security.
 
 
 
