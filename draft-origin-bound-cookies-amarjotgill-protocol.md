@@ -50,7 +50,7 @@ This draft introduces Origin-Bound Cookies which updates {{COOKIES}} aiming to m
 
 # Introduction
 
-Cookies are one of the few components of the web platform that are not scoped to the origin by default. This difference in scoping means that cookies have [weaken confidentiality](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-weak-confidentiality) compared with other storage APIs on the web platform.
+Cookies are one of the few components of the web platform that are not scoped to the origin by default. This difference in scoping means that cookies have [weak confidentiality](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-weak-confidentiality) compared with other storage APIs on the web platform.
 
 ## Examples
 
