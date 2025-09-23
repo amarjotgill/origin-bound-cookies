@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                         19 September 2025
-Expires: 23 March 2026
+Intended status: Informational                         23 September 2025
+Expires: 27 March 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 March 2026.
+   This Internet-Draft will expire on 27 March 2026.
 
 Copyright Notice
 
@@ -115,7 +115,7 @@ Table of Contents
    care about the scheme or port of their connection.  As long as the
    host matches the cookie will be accessible.
 
-   This document proposes changes to [COOKIES] by bounding cookies to
+   This document proposes changes to [COOKIES] by binding cookies to
    port and scheme which will prevent against these attacks and greatly
    improve cookie security.
 
