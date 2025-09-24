@@ -92,6 +92,7 @@ Below is the definition of the port attribute.
 > A cookie's port is either null or a 16-bit unsigned integer.  It is initially null.
 
 For port matching algorithms below will be updated to compare integers to ensure port values match.
+Pre-existing cookies with unspecified "port" will have a null value. This value will cause the cookie to be treated with legacy behavior.
 
 Example:
 
@@ -119,8 +120,7 @@ by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-e
 2.  A and B are both in [“http”, “ws”]
 3.  A and B are both in [“https”, “wss”]
 
-Else they are considered incompatible.
-
+Pre-existing cookies with unspecified "scheme" will have a null value. This value will cause the cookie to be treated with legacy behavior.
 
 Example:
 
