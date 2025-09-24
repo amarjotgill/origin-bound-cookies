@@ -181,8 +181,8 @@ It will be altered to the following:
 >3. Let path be request's URL's path.
 >4. Let httpOnlyAllowed be true.
 >5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
->6. let port be request's URL's port.
->7. let scheme be request's URL's scheme.
+>6. let port be request's URL's port,this can be unspecified.
+>7. let scheme be request's URL's scheme, this can be unspecified.
 >8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.
 >9. Return the result of running Serialize Cookies given cookies.
 
