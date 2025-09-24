@@ -147,8 +147,8 @@ Retrieve Cookies will now take a port and scheme value.
 
 The following will need to be added to step 2:
 
-1.  port `port-matches` cookie's port, if the cookie’s domain attribute is set then we can ignore this step.
-2.  scheme `scheme-matches` cookie's scheme.
+1.  port `port-matches` cookie's port, if the cookie’s domain attribute is set or port value is null then we can ignore this step.
+2.  scheme `scheme-matches` cookie's scheme, if the cookie’s scheme value is null then we can ignore this step.
 
 This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
 
