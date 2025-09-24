@@ -3,7 +3,7 @@ title: "Origin-Bound Cookies"
 abbrev: "Origin-Bound Cookies"
 category: info
 
-docname: draft-origin-bound-cookies-amarjotgill-protocol-latest
+docname: draft-amarjotgill-origin-bound-cookies-protocol-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -21,7 +21,7 @@ venue:
 #  mail: WG@example.com
 #  arch: https://example.com/WG
   github: "amarjotgill/origin-bound-cookies"
-  latest: "https://amarjotgill.github.io/origin-bound-cookies/draft-origin-bound-cookies-amarjotgill-protocol.html"
+  latest: "https://amarjotgill.github.io/origin-bound-cookies/draft-amarjotgill-origin-bound-cookies-protocol.html"
 
 author:
  -
