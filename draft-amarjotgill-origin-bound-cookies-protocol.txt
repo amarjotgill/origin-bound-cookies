@@ -250,7 +250,10 @@ Table of Contents
        value is null then we can ignore this step.
 
    This will ensure that a cookie is only retrieved if the request
-   origin is equal to the cookie's origin
+   origin is equal to the cookie's origin, while minimizing disruption
+   to users.  Allowing current sites to continue working as-is, as old
+   cookies are replaced with newer ones, the new cookies will be origin-
+   bound.
 
 3.4.  Cookie Store Eviction
 

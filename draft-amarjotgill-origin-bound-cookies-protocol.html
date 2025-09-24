@@ -1360,7 +1360,8 @@ Also note if the domain attribute is set then we will ignore checking via port s
             <p id="section-3.3-4.2.1">scheme <code>scheme-matches</code> cookie's scheme, if the cookie’s scheme value is null then we can ignore this step.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
-<p id="section-3.3-5">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.3-5">This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin, while minimizing disruption to users.
+Allowing current sites to continue working as-is, as old cookies are replaced with newer ones, the new cookies will be origin-bound.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cookie-store-eviction">
