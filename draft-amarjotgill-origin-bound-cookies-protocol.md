@@ -187,6 +187,8 @@ It will be altered to the following:
 >9. Return the result of running Serialize Cookies given cookies.
 
 Note the major change here is extracting the port and scheme from the request and running the new version of Retrieve Cookies based on that.
+Also For pre-existing cookies with unspecified "scheme" and "port" fields, these fields will be marked with a special "unspecified" value.
+This value will cause the cookie to be treated with legacy behavior.
 
 
 # Security Considerations
