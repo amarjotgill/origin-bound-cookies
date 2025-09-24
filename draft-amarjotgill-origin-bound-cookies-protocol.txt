@@ -302,10 +302,7 @@ Table of Contents
 
    Note the major change here is extracting the port and scheme from the
    request and running the new version of Retrieve Cookies based on
-   that.  Also For pre-existing cookies with unspecified "scheme" and
-   "port" fields, these fields will be marked with a special
-   "unspecified" value.  This value will cause the cookie to be treated
-   with legacy behavior.
+   that.
 
 4.  Security Considerations
 
@@ -385,7 +382,7 @@ Table of Contents
 
 5.  IANA Considerations
 
-   This document has no IANA actions..
+   This document has no IANA actions.
 
 6.  References
 
