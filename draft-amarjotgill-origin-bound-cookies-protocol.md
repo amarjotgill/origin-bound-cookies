@@ -247,7 +247,7 @@ To preserve the security benefits of origin cookies, this design disallows a dom
 
 # IANA Considerations
 
-This document has no IANA actions.
+This document has no IANA actions..
 
 
 --- back
