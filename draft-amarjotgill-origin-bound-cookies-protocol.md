@@ -150,7 +150,8 @@ The following will need to be added to step 2:
 1.  port `port-matches` cookie's port, if the cookie’s domain attribute is set or port value is null then we can ignore this step.
 2.  scheme `scheme-matches` cookie's scheme, if the cookie’s scheme value is null then we can ignore this step.
 
-This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin
+This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin, while minimizing disruption to users.
+Allowing current sites to continue working as-is, as old cookies are replaced with newer ones, the new cookies will be origin-bound.
 
 ## Cookie Store Eviction
  The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
