@@ -170,6 +170,7 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
 
 
 Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
+
 {:quote}
 >1. Let insecureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.
 >2. Sort insecureCookies by earliest last-access-time first.
@@ -177,6 +178,7 @@ Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ie
 >4. Sort secureCookies by earliest last-access-time first.
 
 With the following:
+
 {:quote}
 > 1. Let insecureCookies and secureCookies be the results from Sort Eviction Cookies.
 
