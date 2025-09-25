@@ -110,9 +110,9 @@ Below is the definition of the scheme attribute.
 {:quote}
 > A cookie's scheme is null or a byte sequence.  It is initially null.
 
- A string A Scheme-Matches a string B the following is true:
+A string A Scheme-Matches a string B the following is true:
 
-1.  A equals B
+1. A equals B
 
 Pre-existing cookies with unspecified "scheme" will have a null value. This value will cause the cookie to be treated with legacy behavior.
 
@@ -131,8 +131,7 @@ Step number 18 of this section will need to be altered to:
 > If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's scheme is equal to oldCookie's scheme.
 
 A new substep should also be added to step number 18:
-
-3. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.
+1. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.
 
 Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.
@@ -153,6 +152,36 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
 
 ## Cookie Store Eviction
  The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
+
+  First a new algorithm to sort eviction cookies will be added in [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms)
+
+ This algorithm `Sort Eviction Cookies` will be as follows.
+ 
+ 1. Take a list of references to all cookies.
+ 2. Let insecureCookies be a list of cookies in the user agent's cookie store whose host whose host is host-equal to host and whose secure is false.
+ 3. Let insecureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.
+ 4. let insecureOriginCookies be a list of the remaining cookies in insecureCookies and sort this list by earliest last-access-time first.
+ 5. Append insecureOriginCookies to the end of insecureDomainCookies. The resulting list is the final, sorted list of insecure cookies.
+ 6. Let secureCookies be a list of cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
+ 7. Let secureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.
+ 8. Let secureOriginCookies be a list of the remaining cookies in secureCookies and sort this list by earliest last-access-time first.
+ 9. Append secureOriginCookies to the end of secureDomainCookies. The resulting list is the final, sorted list of secure cookies.
+ 10. Return both sorted list.
+
+
+Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
+{:quote}
+>1. Let insecureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.
+>2. Sort insecureCookies by earliest last-access-time first.
+>3. Let secureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
+>4. Sort secureCookies by earliest last-access-time first.
+
+With the following:
+{:quote}
+> 1. Let insecureCookies and secureCookies be the results from Sort Eviction Cookies.
+
+All remaining steps will stay the same.
+Updating these steps will ensure that cookies with the domain attribute set for each origin are deleted before any other cookie.
  
 
 ## Requirements Specific to Non-Browser User Agents
