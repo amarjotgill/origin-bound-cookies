@@ -132,7 +132,7 @@ Step number 18 of this section will need to be altered to:
 
 A new substep should also be added to step number 18:
 
-1. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.
+3. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.
 
 Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.
