@@ -1338,7 +1338,7 @@ by adding a new section under <a href="https://httpwg.org/http-extensions/draft-
 <p id="section-3.2-1">We update the storage model in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-store-a-cookie">Section 5.4.3 of COOKIES</a> to ensure that port and scheme are being considered when comparing with existing cookies.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Step number 18 of this section will need to be altered to:<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <blockquote id="section-3.2-3">
-          <p id="section-3.2-3.1">If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's port or scheme is not equal to oldCookie's port or scheme, if the domain attribute is set ignore the port checking.<a href="#section-3.2-3.1" class="pilcrow">¶</a></p>
+          <p id="section-3.2-3.1">If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's scheme is equal to oldCookie's scheme.<a href="#section-3.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.2-4">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
 Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
