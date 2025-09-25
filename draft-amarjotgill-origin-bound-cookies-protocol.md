@@ -84,7 +84,7 @@ An origin cookie is a set of cookies which are set on each origin, an origin bei
 
 ### Port Bound
 
-First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding source-port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
+First, alter [Section 5.1.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-cookie-struct) by adding port to the Cookie Struct, this would be necessary to keep track of the port the cookie was set on.
 
 Below is the definition of the port attribute.
 
