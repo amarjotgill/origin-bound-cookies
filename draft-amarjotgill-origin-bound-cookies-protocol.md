@@ -157,7 +157,7 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
  First a new algorithm to sort eviction cookies will be added in [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms)
 
  This algorithm `Sort Eviction Cookies` will be as follows.
-
+ 
  1. Take a list of references to all cookies.
  2. Let insecureCookies be a list of cookies in the user agent's cookie store whose host whose host is host-equal to host and whose secure is false.
  3. Let insecureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.
@@ -168,16 +168,16 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
  8. Let secureOriginCookies be a list of the remaining cookies in secureCookies and sort this list by earliest last-access-time first.
  9. Append secureOriginCookies to the end of secureDomainCookies. The resulting list is the final, sorted list of secure cookies.
  10. Return both sorted list.
- 
 
-Step 2 will need to be updated to replace:
+
+Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
 {:quote}
 >1. Let insecureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.
 >2. Sort insecureCookies by earliest last-access-time first.
 >3. Let secureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
 >4. Sort secureCookies by earliest last-access-time first.
 
-With the following
+With the following:
 {:quote}
 > 1. Let insecureCookies and secureCookies be the results from Sort Eviction Cookies.
 
