@@ -130,7 +130,7 @@ Step number 18 of this section will need to be altered to:
 {:quote}
 > If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's scheme is equal to oldCookie's scheme.
 
-A new substep should also be added to step number 18
+A new substep should also be added to step number 18:
 
 3. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.
 
@@ -153,23 +153,7 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
 
 ## Cookie Store Eviction
  The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a).
-
- First a new algorithm to sort eviction cookies will be added in [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms)
-
-Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
-{:quote}
->1. Let insecureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.
->2. Sort insecureCookies by earliest last-access-time first.
->3. Let secureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
->4. Sort secureCookies by earliest last-access-time first.
-
-With the following:
-{:quote}
-> 1. Let insecureCookies and secureCookies be the results from Sort Eviction Cookies.
-
-All remaining steps will stay the same.
-Updating these steps will ensure that cookies with the domain attribute set for each origin are deleted before any other cookie.
-
+ 
 
 ## Requirements Specific to Non-Browser User Agents
 
