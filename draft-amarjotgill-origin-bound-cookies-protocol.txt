@@ -292,7 +292,7 @@ Table of Contents
    9.   Append secureOriginCookies to the end of secureDomainCookies.
         The resulting list is the final, sorted list of secure cookies.
 
-   10.  Return both sorted list.
+   10.  Return both sorted lists.
 
    Step 2 of Section 5.2.2 of COOKIES (https://httpwg.org/http-
    extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-
