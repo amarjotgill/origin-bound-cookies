@@ -167,7 +167,7 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
  7. Let secureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.
  8. Let secureOriginCookies be a list of the remaining cookies in secureCookies and sort this list by earliest last-access-time first.
  9. Append secureOriginCookies to the end of secureDomainCookies. The resulting list is the final, sorted list of secure cookies.
- 10. Return both sorted list.
+ 10. Return both sorted lists.
 
 
 Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
