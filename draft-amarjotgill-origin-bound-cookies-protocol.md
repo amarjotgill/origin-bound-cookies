@@ -110,15 +110,9 @@ Below is the definition of the scheme attribute.
 {:quote}
 > A cookie's scheme is null or a byte sequence.  It is initially null.
 
-To simplify cookie-to-scheme matching, a new scheme matching concept will be introduced. This is necessary because initial WebSocket connections, in addition to HTTP and HTTPS,
-can also set and send cookies. To maintain WebSocket compatibility, scheme comparisons will look for "compatible schemes" rather than exact string matches. This will be achieved
-by adding a new section under [Section 5.3 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms).
-
- A string A Scheme-Matches a string B if one of the following is true:
+ A string A Scheme-Matches a string B the following is true:
 
 1.  A equals B
-2.  A and B are both in [“http”, “ws”]
-3.  A and B are both in [“https”, “wss”]
 
 Pre-existing cookies with unspecified "scheme" will have a null value. This value will cause the cookie to be treated with legacy behavior.
 
