@@ -212,10 +212,9 @@ Table of Contents
    |  only is cookie's host-only, path is path-equal to cookie's path,
    |  and cookie's scheme is equal to oldCookie's scheme.
 
-   A new substep should also be added to step number 18
-
-   1.  If cookie's host-only is set to true and cookie’s port does not
-       equal oldCookie’s port then skip the remaining sub-steps.
+   A new substep should also be added to step number 18: 1.  If cookie's
+   host-only is set to true and cookie’s port does not equal oldCookie’s
+   port then skip the remaining sub-steps.
 
    Note the addition of checking port and scheme, this will prevent a
    cookie with differing port or scheme values from overwriting the
@@ -253,18 +252,71 @@ Table of Contents
    (https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-
    cookies.html#name-remove-excess-cookies-for-a).
 
-   Step 2 will need to be updated to the following:
+   First a new algorithm to sort eviction cookies will be added in
+   Section 5.3 of COOKIES (https://httpwg.org/http-extensions/draft-
+   ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms)
 
-   |  Sort all insecureCookies by last access time (earliest to latest),
-   |  prioritizing domain cookies first, followed by origin cookies.
+   This algorithm Sort Eviction Cookies will be as follows.
 
-   Step 4 will also need to be updated to the following:
+   1.   Take a list of references to all cookies.
 
-   |  Sort all secureCookies by last access time (earliest to latest),
-   |  prioritizing domain cookies first, followed by origin cookies.
+   2.   Let insecureCookies be a list of cookies in the user agent's
+        cookie store whose host whose host is host-equal to host and
+        whose secure is false.
 
-   Updating these steps will ensure that domain cookies for each origin
-   are deleted before any other cookie.
+   3.   Let insecureDomainCookies be a list of all cookies with the
+        domain attribute set.  Sort this list by earliest last-access-
+        time first.
+
+   4.   let insecureOriginCookies be a list of the remaining cookies in
+        insecureCookies and sort this list by earliest last-access-time
+        first.
+
+   5.   Append insecureOriginCookies to the end of
+        insecureDomainCookies.  The resulting list is the final, sorted
+        list of insecure cookies.
+
+   6.   Let secureCookies be a list of cookies in the user agent's
+        cookie store whose host is host-equal to host and whose secure
+        is true.
+
+   7.   Let secureDomainCookies be a list of all cookies with the domain
+        attribute set.  Sort this list by earliest last-access-time
+        first.
+
+   8.   Let secureOriginCookies be a list of the remaining cookies in
+        secureCookies and sort this list by earliest last-access-time
+        first.
+
+   9.   Append secureOriginCookies to the end of secureDomainCookies.
+        The resulting list is the final, sorted list of secure cookies.
+
+   10.  Return both sorted list.
+
+   Step 2 of Section 5.2.2 of COOKIES (https://httpwg.org/http-
+   extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-
+   excess-cookies-for-a) need to be updated to replace:
+
+   |  1.  Let insecureCookies be a list of references to all cookies in
+   |      the user agent's cookie store whose host is host-equal to host
+   |      and whose secure is false.
+   |  
+   |  2.  Sort insecureCookies by earliest last-access-time first.
+   |  
+   |  3.  Let secureCookies be a list of references to all cookies in
+   |      the user agent's cookie store whose host is host-equal to host
+   |      and whose secure is true.
+   |  
+   |  4.  Sort secureCookies by earliest last-access-time first.
+
+   With the following:
+
+   |  1.  Let insecureCookies and secureCookies be the results from Sort
+   |      Eviction Cookies.
+
+   All remaining steps will stay the same.  Updating these steps will
+   ensure that cookies with the domain attribute set for each origin are
+   deleted before any other cookie.
 
 3.5.  Requirements Specific to Non-Browser User Agents
 

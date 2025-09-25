@@ -1331,14 +1331,10 @@ Pre-existing cookies with unspecified "port" will have a null value. This value 
 <blockquote id="section-3.2-3">
           <p id="section-3.2-3.1">If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's scheme is equal to oldCookie's scheme.<a href="#section-3.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.2-4">A new substep should also be added to step number 18<a href="#section-3.2-4" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-5">
-<li id="section-3.2-5.1">
-            <p id="section-3.2-5.1.1">If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.<a href="#section-3.2-5.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ol>
-<p id="section-3.2-6">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
-Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">A new substep should also be added to step number 18:
+1. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-5">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
+Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieve-cookies">
@@ -1367,15 +1363,67 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-cookie-store-eviction" class="section-name selfRef">Cookie Store Eviction</a>
         </h3>
 <p id="section-3.4-1">The last algorithm that will need to be updated is the Cookie Store Eviction algorithm outlined <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a">Section 5.2.2 of COOKIES</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">Step 2 will need to be updated to the following:<a href="#section-3.4-2" class="pilcrow">¶</a></p>
-<blockquote id="section-3.4-3">
-          <p id="section-3.4-3.1">Sort all insecureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.<a href="#section-3.4-3.1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">First a new algorithm to sort eviction cookies will be added in <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms">Section 5.3 of COOKIES</a><a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4-3">This algorithm <code>Sort Eviction Cookies</code> will be as follows.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3.4-4">
+<li id="section-3.4-4.1">
+            <p id="section-3.4-4.1.1">Take a list of references to all cookies.<a href="#section-3.4-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.2">
+            <p id="section-3.4-4.2.1">Let insecureCookies be a list of cookies in the user agent's cookie store whose host whose host is host-equal to host and whose secure is false.<a href="#section-3.4-4.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.3">
+            <p id="section-3.4-4.3.1">Let insecureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.<a href="#section-3.4-4.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.4">
+            <p id="section-3.4-4.4.1">let insecureOriginCookies be a list of the remaining cookies in insecureCookies and sort this list by earliest last-access-time first.<a href="#section-3.4-4.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.5">
+            <p id="section-3.4-4.5.1">Append insecureOriginCookies to the end of insecureDomainCookies. The resulting list is the final, sorted list of insecure cookies.<a href="#section-3.4-4.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.6">
+            <p id="section-3.4-4.6.1">Let secureCookies be a list of cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.<a href="#section-3.4-4.6.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.7">
+            <p id="section-3.4-4.7.1">Let secureDomainCookies be a list of all cookies with the domain attribute set. Sort this list by earliest last-access-time first.<a href="#section-3.4-4.7.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.8">
+            <p id="section-3.4-4.8.1">Let secureOriginCookies be a list of the remaining cookies in secureCookies and sort this list by earliest last-access-time first.<a href="#section-3.4-4.8.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.9">
+            <p id="section-3.4-4.9.1">Append secureOriginCookies to the end of secureDomainCookies. The resulting list is the final, sorted list of secure cookies.<a href="#section-3.4-4.9.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.4-4.10">
+            <p id="section-3.4-4.10.1">Return both sorted list.<a href="#section-3.4-4.10.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-3.4-5">Step 2 of <a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a">Section 5.2.2 of COOKIES</a> need to be updated to replace:<a href="#section-3.4-5" class="pilcrow">¶</a></p>
+<blockquote id="section-3.4-6">
+          <ol start="1" type="1" class="normal type-1" id="section-3.4-6.1">
+<li id="section-3.4-6.1.1">
+              <p id="section-3.4-6.1.1.1">Let insecureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.<a href="#section-3.4-6.1.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li id="section-3.4-6.1.2">
+              <p id="section-3.4-6.1.2.1">Sort insecureCookies by earliest last-access-time first.<a href="#section-3.4-6.1.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li id="section-3.4-6.1.3">
+              <p id="section-3.4-6.1.3.1">Let secureCookies be a list of references to all cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.<a href="#section-3.4-6.1.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li id="section-3.4-6.1.4">
+              <p id="section-3.4-6.1.4.1">Sort secureCookies by earliest last-access-time first.<a href="#section-3.4-6.1.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ol>
 </blockquote>
-<p id="section-3.4-4">Step 4 will also need to be updated to the following:<a href="#section-3.4-4" class="pilcrow">¶</a></p>
-<blockquote id="section-3.4-5">
-          <p id="section-3.4-5.1">Sort all secureCookies by last access time (earliest to latest), prioritizing domain cookies first, followed by origin cookies.<a href="#section-3.4-5.1" class="pilcrow">¶</a></p>
+<p id="section-3.4-7">With the following:<a href="#section-3.4-7" class="pilcrow">¶</a></p>
+<blockquote id="section-3.4-8">
+          <ol start="1" type="1" class="normal type-1" id="section-3.4-8.1">
+<li id="section-3.4-8.1.1">
+              <p id="section-3.4-8.1.1.1">Let insecureCookies and secureCookies be the results from Sort Eviction Cookies.<a href="#section-3.4-8.1.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ol>
 </blockquote>
-<p id="section-3.4-6">Updating these steps will ensure that domain cookies for each origin are deleted before any other cookie.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+<p id="section-3.4-9">All remaining steps will stay the same.
+Updating these steps will ensure that cookies with the domain attribute set for each origin are deleted before any other cookie.<a href="#section-3.4-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-specific-to-non-browser-user-agents">
