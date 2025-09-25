@@ -1331,10 +1331,14 @@ Pre-existing cookies with unspecified "port" will have a null value. This value 
 <blockquote id="section-3.2-3">
           <p id="section-3.2-3.1">If the user agent's cookie store contains a cookie oldCookie whose name is cookie's name, host is host-equal to cookie's host, host-only is cookie's host-only, path is path-equal to cookie's path, and cookie's scheme is equal to oldCookie's scheme.<a href="#section-3.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.2-4">A new substep should also be added to step number 18:
-1. If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.2-5">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
-Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">A new substep should also be added to step number 18:<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3.2-5">
+<li id="section-3.2-5.1">
+            <p id="section-3.2-5.1.1">If cookie's host-only is set to true and cookie’s port does not equal oldCookie’s port then skip the remaining sub-steps.<a href="#section-3.2-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-3.2-6">Note the addition of checking port and scheme, this will prevent a cookie with differing port or scheme values from overwriting the oldCookie, instead this cookie would be stored as a separate cookie and the oldCookie will not be deleted.
+Also note if the domain attribute is set then we will ignore checking via port so it will overwite the oldCookie.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieve-cookies">
