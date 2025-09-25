@@ -225,9 +225,10 @@ Table of Contents
    |  only is cookie's host-only, path is path-equal to cookie's path,
    |  and cookie's scheme is equal to oldCookie's scheme.
 
-   A new substep should also be added to step number 18 3.  If cookie's
-   host-only is set to true and cookie’s port does not equal oldCookie’s
-   port then skip the remaining sub-steps.
+   A new substep should also be added to step number 18
+
+   1.  If cookie's host-only is set to true and cookie’s port does not
+       equal oldCookie’s port then skip the remaining sub-steps.
 
    Note the addition of checking port and scheme, this will prevent a
    cookie with differing port or scheme values from overwriting the
