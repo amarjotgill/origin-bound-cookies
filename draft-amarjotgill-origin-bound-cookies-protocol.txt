@@ -4,8 +4,8 @@
 
 Network Working Group                                            A. Gill
 Internet-Draft                                                Google LLC
-Intended status: Informational                         25 September 2025
-Expires: 29 March 2026
+Intended status: Informational                         29 September 2025
+Expires: 2 April 2026
 
 
                           Origin-Bound Cookies
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2026.
+   This Internet-Draft will expire on 2 April 2026.
 
 Copyright Notice
 
@@ -129,8 +129,8 @@ Table of Contents
    name, cookie-value and sub domain with another cookie but differs via
    scheme or port.
 
-   A domain cookie is a cookie which has the Domain= parameter set in
-   its field.
+   A domain cookie is a cookie which has the Domain attribute set in its
+   field.
 
    An origin cookie is a set of cookies which are set on each origin, an
    origin being the same port and scheme value.
