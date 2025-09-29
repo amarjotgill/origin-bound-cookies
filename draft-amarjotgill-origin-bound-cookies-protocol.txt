@@ -257,42 +257,41 @@ Table of Contents
    Section 5.3 of COOKIES (https://httpwg.org/http-extensions/draft-
    ietf-httpbis-layered-cookies.html#name-subcomponent-algorithms)
 
-   This algorithm Sort Eviction Cookies will be as follows.
+   To Sort Eviction Cookies, given a host, run the following steps.
 
-   1.   Take a list of references to all cookies.
+   1.   Let insecureCookies be a list of cookies in the user agent's
+        cookie store whose host is host-equal to host and whose secure
+        is false.
 
-   2.   Let insecureCookies be a list of cookies in the user agent's
-        cookie store whose host whose host is host-equal to host and
-        whose secure is false.
+   2.   Let insecureDomainCookies be a list of all cookies in
+        insecureCookies whose host-only is false.
 
-   3.   Let insecureDomainCookies be a list of all cookies with the
-        domain attribute set.  Sort this list by earliest last-access-
-        time first.
+   3.   Sort insecureDomainCookies by earliest last-access-time first.
 
-   4.   let insecureOriginCookies be a list of the remaining cookies in
-        insecureCookies and sort this list by earliest last-access-time
-        first.
+   4.   Let insecureOriginCookies be a list of all cookies in
+        insecureCookies whose host-only is true and sort this list by
+        earliest last-access-time first.
 
-   5.   Append insecureOriginCookies to the end of
-        insecureDomainCookies.  The resulting list is the final, sorted
-        list of insecure cookies.
+   5.   Let sortedInsecureCookies be the result of appending
+        insecureOriginCookies to the end of insecureDomainCookies.
 
    6.   Let secureCookies be a list of cookies in the user agent's
         cookie store whose host is host-equal to host and whose secure
         is true.
 
-   7.   Let secureDomainCookies be a list of all cookies with the domain
-        attribute set.  Sort this list by earliest last-access-time
-        first.
+   7.   Let secureDomainCookies be a list of all cookies in
+        secureCookies whose host-only is false.
 
-   8.   Let secureOriginCookies be a list of the remaining cookies in
-        secureCookies and sort this list by earliest last-access-time
-        first.
+   8.   Sort secureDomainCookies by earliest last-access-time first.
 
-   9.   Append secureOriginCookies to the end of secureDomainCookies.
-        The resulting list is the final, sorted list of secure cookies.
+   9.   Let secureOriginCookies be a list of all cookies in
+        secureCookies whose host-only is true and sort this list by
+        earliest last-access-time first.
 
-   10.  Return both sorted lists.
+   10.  Let sortedSecureCookies be the result of appending
+        secureOriginCookies to the end of secureDomainCookies.
+
+   11.  Return sortedInsecureCookies and sortedSecureCookies.
 
    Step 2 of Section 5.2.2 of COOKIES (https://httpwg.org/http-
    extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-
@@ -312,8 +311,8 @@ Table of Contents
 
    With the following:
 
-   |  1.  Let insecureCookies and secureCookies be the results from Sort
-   |      Eviction Cookies.
+   |  1.  Let insecureCookies and secureCookies be the result of running
+   |      Sort Eviction Cookies.
 
    All remaining steps will stay the same.  Updating these steps will
    ensure that cookies with the domain attribute set for each origin are
