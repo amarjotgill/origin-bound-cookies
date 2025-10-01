@@ -12,14 +12,15 @@ v: 3
 # area: AREA
 # workgroup: HTTP
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - cookies
+ - origin-bound
+ - privacy
 venue:
-#  group: WG
+#  group: HTTP
 #  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+#  home: https://httpwg.org/
+#  mail: ietf-http-wg@w3.org
+#  arch: https://lists.w3.org/Archives/Public/ietf-http-wg/
   github: "amarjotgill/origin-bound-cookies"
   latest: "https://amarjotgill.github.io/origin-bound-cookies/draft-amarjotgill-origin-bound-cookies-protocol.html"
 
@@ -272,4 +273,8 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The editors would also like to thank the following individuals for feedback, insight, and implementation of this draft and its predecessors (in alphabetical order):
+Dylan Cutler,
+Johann Hofmann,
+Mike West,
+Steven Bingler,
