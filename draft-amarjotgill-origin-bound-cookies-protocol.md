@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 # area: AREA
-# workgroup: HTTP
+workgroup: HTTP
 keyword:
  - cookies
  - origin-bound
