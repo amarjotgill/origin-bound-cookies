@@ -462,7 +462,10 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   The editors would also like to thank the following individuals for
+   feedback, insight, and implementation of this draft and its
+   predecessors (in alphabetical order): Dylan Cutler, Johann Hofmann,
+   Mike West, Steven Bingler,
 
 Author's Address
 
