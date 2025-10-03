@@ -1486,14 +1486,20 @@ Updating these steps will ensure that cookies with the domain attribute set for 
 cookies to their setting origin, preventing such malicious cookies from being accessed by a different origin.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">Weak confidentiality: This refers to an attacker reading sensitive user data set by a secure site, which is unintentionally sent to an insecure site. OBC ensures that cookies are
 only accessible by the same origin that set them, preventing this type of data leakage.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">One security concern is how to handle clients that do not support OBC, this  is handled by the following, when a cookie has a valid Domain attribute specified (hereby called a
-“domain cookie”) that cookie has relaxed bindings. Namely, the cookie may be sent to:
- 1. any host which domain matches the Domain value (This is unchanged from legacy behavior)
- 2. any port value<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">Importantly a domain cookie is still bound to the scheme of its setting origin.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">This behavior allows developers to opt-out of the stronger protections of an origin cookie which can help with compatibility for usages that need a particular cookie available
-across hosts and/or ports.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">Origin binding cookies will obsolete the purpose of Secure but this proposal will not remove support for Secure. Removal for Secure could be a possible future consideration for the HTTP WG.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-4">One security concern is how to handle clients that require the use of cookies across origins, this is handled by the following,
+when a cookie has a valid Domain attribute specified (hereby called a “domain cookie”) that cookie has relaxed bindings. Namely, the cookie may be sent to:<a href="#section-4-4" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4-5">
+<li id="section-4-5.1">
+          <p id="section-4-5.1.1">any host which domain matches the Domain value (This is unchanged from legacy behavior)<a href="#section-4-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-4-5.2">
+          <p id="section-4-5.2.1">any port value<a href="#section-4-5.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ol>
+<p id="section-4-6">Importantly a domain cookie is still bound to the scheme of its setting origin.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">This behavior allows developers to opt-out of the stronger protections of an origin cookie which can help with compatibility for usages that need a particular cookie available
+across hosts and/or ports.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-8">Origin binding cookies will obsolete the purpose of Secure but this proposal will not remove support for Secure. Removal for Secure could be a possible future consideration for the HTTP WG.<a href="#section-4-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
