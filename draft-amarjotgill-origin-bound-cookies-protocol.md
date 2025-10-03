@@ -137,8 +137,8 @@ Retrieve Cookies will now take a `port` (16-bit unsigned integer) and a `scheme`
 
 The following will need to be added to step 2:
 
-1.  port equals cookie's port, if the cookie’s domain attribute is set or port value is null then we can ignore this step.
-2.  scheme equals cookie's scheme, if the cookie’s scheme value is null then we can ignore this step.
+1.  cookies host only is true, cookie's port is not null, and port equals cookie's port.
+2.  cookie's scheme is not null and scheme equals cookie's scheme.
 
 This will ensure that a cookie is only retrieved if the request origin is equal to the cookie's origin, while minimizing disruption to users.
 Allowing current sites to continue working as-is, as old cookies are replaced with newer ones, the new cookies will be origin-bound.
