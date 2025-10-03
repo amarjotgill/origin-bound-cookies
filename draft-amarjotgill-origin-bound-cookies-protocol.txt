@@ -154,7 +154,8 @@ Table of Contents
    For port matching algorithms below will be updated to compare
    integers to ensure port values match.  Pre-existing cookies with
    unspecified "port" will have a null value.  This value will cause the
-   cookie to be treated with legacy behavior.
+   cookie to be treated with legacy behavior (The cookie will not be
+   bound to port).
 
    Example:
 
