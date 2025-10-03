@@ -133,7 +133,7 @@ Also note if the domain attribute is set then we will ignore checking via port s
 
 The Retrieve Cookies algorithm will need to be updated in [Section 5.4.5 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
-Retrieve Cookies will now take a port value (16-bit unsigned integer) and a scheme value (string).
+Retrieve Cookies will now take a `port` (16-bit unsigned integer) and a `scheme` (string).
 
 The following will need to be added to step 2:
 
