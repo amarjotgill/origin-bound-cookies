@@ -213,8 +213,9 @@ Weak confidentiality: This refers to an attacker reading sensitive user data set
 only accessible by the same origin that set them, preventing this type of data leakage.
 
 
-One security concern is how to handle clients that do not support OBC, this  is handled by the following, when a cookie has a valid Domain attribute specified (hereby called a
-“domain cookie”) that cookie has relaxed bindings. Namely, the cookie may be sent to:
+One security concern is how to handle clients that require the use of cookies across origins, this is handled by the following,
+when a cookie has a valid Domain attribute specified (hereby called a “domain cookie”) that cookie has relaxed bindings. Namely, the cookie may be sent to:
+
  1. any host which domain matches the Domain value (This is unchanged from legacy behavior)
  2. any port value
 
