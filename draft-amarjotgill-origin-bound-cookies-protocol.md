@@ -153,14 +153,16 @@ Allowing current sites to continue working as-is, as old cookies are replaced wi
  1. Let insecureCookies be a list of cookies in the user agent's cookie store whose host is host-equal to host and whose secure is false.
  2. Let insecureDomainCookies be a list of all cookies in insecureCookies whose host-only is false.
  3. Sort insecureDomainCookies by earliest last-access-time first.
- 4. Let insecureOriginCookies be a list of all cookies in insecureCookies whose host-only is true and sort this list by earliest last-access-time first.
- 5. Let sortedInsecureCookies be the result of appending insecureOriginCookies to the end of insecureDomainCookies.
- 6. Let secureCookies be a list of cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
- 7. Let secureDomainCookies be a list of all cookies in secureCookies whose host-only is false.
- 8. Sort secureDomainCookies by earliest last-access-time first.
- 9. Let secureOriginCookies be a list of all cookies in secureCookies whose host-only is true and sort this list by earliest last-access-time first.
- 10. Let sortedSecureCookies be the result of appending secureOriginCookies to the end of secureDomainCookies.
- 11. Return sortedInsecureCookies and sortedSecureCookies.
+ 4. Let insecureOriginCookies be a list of all cookies in insecureCookies whose host-only is true.
+ 5. Sort insecureOriginCookies by earliest last-access-time first.
+ 6. Let sortedInsecureCookies be the result of appending insecureOriginCookies to the end of insecureDomainCookies.
+ 7. Let secureCookies be a list of cookies in the user agent's cookie store whose host is host-equal to host and whose secure is true.
+ 8. Let secureDomainCookies be a list of all cookies in secureCookies whose host-only is false.
+ 9. Sort secureDomainCookies by earliest last-access-time first.
+ 10. Let secureOriginCookies be a list of all cookies in secureCookies whose host-only is true.
+ 11. Sort secureOriginCookies by earliest last-access-time first.
+ 12. Let sortedSecureCookies be the result of appending secureOriginCookies to the end of secureDomainCookies.
+ 13. Return sortedInsecureCookies and sortedSecureCookies.
 
 
 Step 2 of [Section 5.2.2 of COOKIES](https://httpwg.org/http-extensions/draft-ietf-httpbis-layered-cookies.html#name-remove-excess-cookies-for-a) need to be updated to replace:
@@ -193,8 +195,8 @@ It will be altered to the following:
 >3. Let path be request's URL's path.
 >4. Let httpOnlyAllowed be true.
 >5. Let sameSite be a string whose value is implementation-defined, but has to be one of "strict-or-less", "lax-or-less", "unset-or-less", or "none".
->6. let port be request's URL's port,this can be unspecified.
->7. let scheme be request's URL's scheme, this can be unspecified.
+>6. Let port be request's URL's port.
+>7. Let scheme be request's URL's scheme.
 >8. Let cookies be the result of running Retrieve Cookies given isSecure, host, path, httpOnlyAllowed, sameSite, port, and scheme.
 >9. Return the result of running Serialize Cookies given cookies.
 
@@ -221,38 +223,7 @@ Importantly a domain cookie is still bound to the scheme of its setting origin.
 This behavior allows developers to opt-out of the stronger protections of an origin cookie which can help with compatibility for usages that need a particular cookie available
 across hosts and/or ports.
 
-
-## Shadowing Cookies
-
-A cookie that includes a Domain attribute is called a "domain cookie" and has more relaxed restrictions. Specifically, it can be sent to:
-
-Any host that matches the specified domain.
-
-Any port on those hosts.
-
-Importantly, the cookie remains bound to the scheme (e.g., https) of the site that set it. This behavior allows developers to opt-out of the stricter default protections, which is useful when a cookie needs to be shared across multiple subdomains or ports.
-
-The "Shadowing" Security Issue as described in {{Cookies-Lack-Integrity}}
-This flexibility creates a potential vulnerability where a secure "origin cookie" (one without a Domain attribute) could be overridden or "shadowed" by a less-secure domain cookie.
-Removal for Secure could be a possible future consideration for the HTTP WG.
-
-
-Here's an example:
-
-A user visits https://trusted.example.com, which sets a secure cookie:
-
-Set-Cookie: trustedValue=1234
-
-Later, the user visits https://evil.example.com, which sets a conflicting domain cookie:
-
-Set-Cookie: trustedValue=evil1234; Domain=example.com
-
-The next time the user visits https://trusted.example.com, the browser will send both cookies. The server might incorrectly process the malicious evil1234 cookie, leading to potential security problems.
-
-The Solution:
-
-To preserve the security benefits of origin cookies, this design disallows a domain cookie from shadowing an origin cookie. This ensures that the more specific and secure cookie cannot be overridden by a less secure one.
-
+Origin binding cookies will obsolete the purpose of Secure but this proposal will not remove support for Secure. Removal for Secure could be a possible future consideration for the HTTP WG.
 
 # IANA Considerations
 
