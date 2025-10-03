@@ -72,11 +72,6 @@ This document proposes changes to {{COOKIES}} by binding cookies to port and sch
 
 An aliasing cookie refers to a cookie which shares the same cookie-name, cookie-value and sub domain with another cookie but differs via scheme or port.
 
-A domain cookie is a cookie which has the Domain attribute set in its field.
-
-An origin cookie is a set of cookies which are set on each origin, an origin being the same port and scheme value.
-
-
 {::boilerplate bcp14-tagged}
 
 # User Agent Requirements
