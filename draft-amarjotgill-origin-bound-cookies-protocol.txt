@@ -221,15 +221,16 @@ Table of Contents
    Section 5.4.5 of COOKIES (https://httpwg.org/http-extensions/draft-
    ietf-httpbis-layered-cookies.html#name-retrieve-cookies).
 
-   Retrieve Cookies will now take a port and scheme value.
+   Retrieve Cookies will now take a port value (16-bit unsigned integer)
+   and a scheme value (string).
 
    The following will need to be added to step 2:
 
-   1.  port port-matches cookie's port, if the cookie’s domain attribute
-       is set or port value is null then we can ignore this step.
+   1.  port equals cookie's port, if the cookie’s domain attribute is
+       set or port value is null then we can ignore this step.
 
-   2.  scheme scheme-matches cookie's scheme, if the cookie’s scheme
-       value is null then we can ignore this step.
+   2.  scheme equals cookie's scheme, if the cookie’s scheme value is
+       null then we can ignore this step.
 
    This will ensure that a cookie is only retrieved if the request
    origin is equal to the cookie's origin, while minimizing disruption
