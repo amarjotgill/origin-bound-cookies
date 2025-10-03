@@ -177,13 +177,9 @@ Table of Contents
    |  A cookie's scheme is null or a byte sequence.  It is initially
    |  null.
 
-   A string A Scheme-Matches a string B the following is true:
-
-   1.  A equals B
-
    Pre-existing cookies with unspecified "scheme" will have a null
    value.  This value will cause the cookie to be treated with legacy
-   behavior.
+   behavior (The cookie will not be bound to scheme).
 
    Example:
 

@@ -1305,16 +1305,10 @@ Pre-existing cookies with unspecified "port" will have a null value. This value 
 <blockquote id="section-3.1.2-3">
             <p id="section-3.1.2-3.1">A cookie's scheme is null or a byte sequence.  It is initially null.<a href="#section-3.1.2-3.1" class="pilcrow">¶</a></p>
 </blockquote>
-<p id="section-3.1.2-4">A string A Scheme-Matches a string B the following is true:<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1.2-5">
-<li id="section-3.1.2-5.1">
-              <p id="section-3.1.2-5.1.1">A equals B<a href="#section-3.1.2-5.1.1" class="pilcrow">¶</a></p>
-</li>
-          </ol>
-<p id="section-3.1.2-6">Pre-existing cookies with unspecified "scheme" will have a null value. This value will cause the cookie to be treated with legacy behavior.<a href="#section-3.1.2-6" class="pilcrow">¶</a></p>
-<p id="section-3.1.2-7">Example:<a href="#section-3.1.2-7" class="pilcrow">¶</a></p>
-<p id="section-3.1.2-8">The new behavior will behave as the following.<a href="#section-3.1.2-8" class="pilcrow">¶</a></p>
-<p id="section-3.1.2-9">A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.<a href="#section-3.1.2-9" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-4">Pre-existing cookies with unspecified "scheme" will have a null value. This value will cause the cookie to be treated with legacy behavior (The cookie will not be bound to scheme).<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-5">Example:<a href="#section-3.1.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-6">The new behavior will behave as the following.<a href="#section-3.1.2-6" class="pilcrow">¶</a></p>
+<p id="section-3.1.2-7">A cookie set by origin https://example.com will only ever be sent to https://example.com. It will never be sent to a different scheme value such as http://example.com.<a href="#section-3.1.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
