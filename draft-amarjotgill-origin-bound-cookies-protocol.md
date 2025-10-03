@@ -88,7 +88,7 @@ Below is the definition of the port attribute.
 > A cookie's port is either null or a 16-bit unsigned integer.  It is initially null.
 
 For port matching algorithms below will be updated to compare integers to ensure port values match.
-Pre-existing cookies with unspecified "port" will have a null value. This value will cause the cookie to be treated with legacy behavior.
+Pre-existing cookies with unspecified "port" will have a null value. This value will cause the cookie to be treated with legacy behavior (The cookie will not be bound to port).
 
 Example:
 
