@@ -3,7 +3,7 @@ title: "Origin-Bound Cookies"
 abbrev: "Origin-Bound Cookies"
 category: info
 
-docname: draft-amarjotgill-origin-bound-cookies-protocol-00
+docname: draft-amarjotgill-origin-bound-cookies-protocol-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
