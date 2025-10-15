@@ -22,7 +22,7 @@ venue:
 #  mail: ietf-http-wg@w3.org
 #  arch: https://lists.w3.org/Archives/Public/ietf-http-wg/
   github: "amarjotgill/origin-bound-cookies"
-  latest: "https://amarjotgill.github.io/origin-bound-cookies/draft-amarjotgill-origin-bound-cookies-protocol-00.html"
+  latest: "https://amarjotgill.github.io/origin-bound-cookies/draft-amarjotgill-origin-bound-cookies-protocol.html"
 
 author:
  -
